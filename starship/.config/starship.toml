@@ -1,0 +1,34 @@
+# Inserts  blank line between shell prompts
+add_newline = false 
+
+format = "$all"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold red)"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+[git_status]
+conflicted = '[=($count)](fg:#FF75D8)'
+stashed = '[\$($count)](fg:#29A0B1)'
+ahead = '[⇡($count)](fg:#B5E5CF)'
+behind = '[⇣($count)](fg:#FCB5AC)'
+untracked = '[?($count)](fg:#3D5B59)'
+modified = '[!($count)](fg:#FBE7C6)'
+staged = '[+($count)](fg:#B4F8C8)'
+renamed = '[»($count)](fg:#B99095)'
+deleted = '[✘($count)](fg:#FFAEBC)'
+
+[docker_context]
+format = "via [🐋 $context ](blue bold)"
+only_with_files=true
+disabled=false
+
+# disable for now since detec files isn't working properly
+[kubernetes]
+disabled = true
+detect_files = ['manifest.yaml']
