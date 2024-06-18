@@ -1,0 +1,22 @@
+{
+  "title": "RMS Yabai Binding",
+  "rules": [
+    {
+      "description": "Right Option to Hyper Key",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "right_option"
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [ "left_control", "left_option", "left_command" ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
