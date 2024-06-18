@@ -54,9 +54,9 @@ alias ..='cd ..'
 alias grep='grep --color=auto'
 
 # .cfg bare repo alias
-alias config='/usr/bin/git --git-dir=/Users/rms/.cfg/ --work-tree=/Users/rms'
-alias cs='config status -s'
-alias cdi='()config diff $1'
+# alias config='/usr/bin/git --git-dir=/Users/rms/.cfg/ --work-tree=/Users/rms'
+# alias cs='config status -s'
+# alias cdi='()config diff $1'
 
 #zsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
