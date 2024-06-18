@@ -1,0 +1,119 @@
+""" Map leader to space
+let mapleader=" "
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<cr>
+
+""" Plugins
+set surround
+set NERDTree
+set highlightedyank
+set sneak
+set multicursor
+"""set multiple-cursors
+
+""" Settings
+set relativenumber
+set number
+set incsearch
+set scrolloff=8
+set sidescrolloff=8
+set visualbell
+set showmode
+""" ignore case
+set ignorecase
+
+""" Idea specific settings
+set idearefactormode=keep
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+""" Mappings
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>ng :NERDTreeFocus<cr>
+map <leader>nf :NERDTreeFind<cr>
+
+" Don't copy underlying text on paste
+vmap p "_dP
+
+map <leader>sqa <Action>(CloseAllEditors)
+nmap <leader>sq <Action>(CloseEditor)
+map <S-H> gT
+map <S-L> gt
+map <leader>t <M-8>
+map gcc <Action>(CommentByLineComment)
+sethandler <c-s> a:vim
+nmap <c-s> <Plug>(sneak-s)
+
+map <leader>dc <Action>(Debug)
+map <leader>c <Action>(Stop)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>z <Action>(HideAllWindows) 
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>gf <Action>(ReformatCode)
+map <leader>rn <Action>(RenameElement)
+
+map <c-\> <Action>(ActivateTerminalToolWindow)
+map <c-t> <Action>(TerminalNewSession)
+
+" Split Navigation
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-h> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <leader>sv :action SplitVertically<cr>
+nnoremap <leader>ss :action SplitHorizontally<cr>
+nnoremap <leader>su :action Unsplit<cr>
+map ff <Action>(SearchEverywhere)
+
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap [[ :action MethodUp<cr>
+nnoremap ]] :action MethodDown<cr>
+
+nnoremap zc :action CollapseRegion<cr>
+nnoremap zo :action ExpandRegion<cr>
+
+nnoremap gc :action GotoClass<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gp :action GotoSuperMethod<cr>
+"nnoremap gb :action Back<cr>
+"nnoremap gf :action Forward<cr>
+nnoremap gr :action ShowUsages<cr>
+nnoremap gq :action QuickImplementations<cr>
+nnoremap <leader>e :action Refactorings.QuickListPopUpAction<cr>
+nnoremap gn :action GotoNextError<cr>
+nnoremap gp :action GotoPreviousError<cr>
+
+"nnoremap ,r :action ContextRun<cr>
+"nnoremap ,c :action RunClass<cr>
+"nnoremap ,f :action ChooseRunConfiguration<cr>
+"nnoremap ,t :action ActivateRunToolWindow<cr>
+"nnoremap ,u :action Rerun<cr>
+nnoremap , ,
+
+sethandler <M-j> a:vim
+sethandler <M-k> a:vim
+nnoremap <M-j> :action MoveLineDown<cr>==
+nnoremap <M-k> :action MoveLineUp<cr>==
+vnoremap <M-j> :action MoveLineDown<cr>
+vnoremap <M-k> :action MoveLineUp<cr>
+inoremap <M-j> <Esc>:action MoveLineDown<cr>==i
+inoremap <M-k> <Esc>:action MoveLineUp<cr>==i
+
+nnoremap x "_x
+
+
+nnoremap <leader>+ <C-a>
+nnoremap <leader>- <C-x>
+
