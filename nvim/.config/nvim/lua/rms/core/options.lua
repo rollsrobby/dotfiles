@@ -9,6 +9,8 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.signcolumn = 'yes:1'
 opt.scrolloff = 8
+opt.expandtab = true
+
 
 opt.clipboard:append { 'unnamedplus' }
 
