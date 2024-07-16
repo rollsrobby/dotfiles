@@ -3,7 +3,6 @@ export PATH="${PATH}:${HOME}/.local/bin"
 export DISABLE_AUTO_TITLE='true'
 # export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 
-
 setopt NO_CASE_GLOB
 
 # fcd() {
@@ -51,6 +50,8 @@ fi
 
 alias cd='z'
 alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
 alias grep='grep --color=auto'
 
 # .cfg bare repo alias
@@ -84,7 +85,6 @@ eval $(thefuck --alias fk)
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
-
 
 # -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
