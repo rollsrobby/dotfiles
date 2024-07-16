@@ -36,7 +36,7 @@ return {
 		local mason_lspconfig = require('mason-lspconfig')
 		mason_lspconfig.setup({
 			ensure_installed = {
-				'csharp_ls', 'omnisharp', 'lua_ls', 'powershell_es', 'tsserver', 'tailwindcss', 'astro', 'eslint', 'jsonls',
+				'csharp_ls', 'omnisharp', 'biome', 'lua_ls', 'powershell_es', 'tsserver', 'tailwindcss', 'astro', 'eslint', 'jsonls',
 			},
 			handlers = {
 				omnisharp = function()
