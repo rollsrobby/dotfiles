@@ -5,6 +5,8 @@ export DISABLE_AUTO_TITLE='true'
 
 setopt NO_CASE_GLOB
 
+export EDITOR=neovim
+
 # fcd() {
 #   local dir
 #   dir=$(find ${1:-.} -type d \( -name 'node_modules' -o -path '*/.*' \) -prune -o -print 2> /dev/null | fzf +m) && cd "$dir"
