@@ -57,7 +57,7 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- local serversWithDefaultConfig = { 'eslint', 'tsserver', 'tailwindcss', 'omnisharp', 'csharp_ls' }
-		local serversWithDefaultConfig = { 'biome', 'tsserver', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls' }
+		local serversWithDefaultConfig = { 'biome', 'tsserver', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls', 'marksman' }
 
 		for _, lsp in ipairs(serversWithDefaultConfig) do
 			lspconfig[lsp].setup({
