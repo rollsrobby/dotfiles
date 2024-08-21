@@ -107,3 +107,6 @@ _fzf_compgen_dir() {
 
 # bun completions
 [ -s "/Users/rms/.bun/_bun" ] && source "/Users/rms/.bun/_bun"
+
+# hook direnv into shell
+eval "$(direnv hook zsh)"
