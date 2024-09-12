@@ -85,6 +85,11 @@ export PATH="$PNPM_HOME:$PATH"
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
+# ngrok completion
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
@@ -92,6 +97,8 @@ eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
