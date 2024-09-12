@@ -169,6 +169,10 @@ if.app-id = 'net.kovidgoyal.kitty'
 run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = ['move-node-to-workspace C']
 
