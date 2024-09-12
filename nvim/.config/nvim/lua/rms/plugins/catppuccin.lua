@@ -1,16 +1,3 @@
--- return {
--- 	"catppuccin/nvim",
--- 	name = "cattppuccin",
--- 	priority = 1000,
--- 	config = function()
--- 		require('catppuccin').setup({
--- 			flavour = 'mocha',
--- 			transparent_background = true
--- 		})
--- 		vim.cmd.colorscheme 'catppuccin'
--- 		-- vim.cmd('colorscheme catppuccin-mocha')
--- 	end
--- }
 return {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -107,25 +94,25 @@ return {
                         GitSignsChange = { fg = colors.peach },
                         LineNr = { fg = colors.overlay0 },
                         LspInfoBorder = { link = "FloatBorder" },
-                        NeoTreeDirectoryIcon = { fg = colors.subtext1 },
-                        NeoTreeDirectoryName = { fg = colors.subtext1 },
-                        NeoTreeFloatBorder = { link = "TelescopeResultsBorder" },
-                        NeoTreeGitConflict = { fg = colors.red },
-                        NeoTreeGitDeleted = { fg = colors.red },
-                        NeoTreeGitIgnored = { fg = colors.overlay0 },
-                        NeoTreeGitModified = { fg = colors.peach },
-                        NeoTreeGitStaged = { fg = colors.green },
-                        NeoTreeGitUnstaged = { fg = colors.red },
-                        NeoTreeGitUntracked = { fg = colors.green },
-                        NeoTreeIndent = { fg = colors.surface1 },
-                        NeoTreeNormal = { bg = colors.mantle },
-                        NeoTreeNormalNC = { bg = colors.mantle },
-                        NeoTreeRootName = { fg = colors.subtext1, style = { "bold" } },
-                        NeoTreeTabActive = { fg = colors.text, bg = colors.mantle },
-                        NeoTreeTabInactive = { fg = colors.surface2, bg = colors.crust },
-                        NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
-                        NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
-                        NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
+                        -- NeoTreeDirectoryIcon = { fg = colors.subtext1 },
+                        -- NeoTreeDirectoryName = { fg = colors.subtext1 },
+                        -- NeoTreeFloatBorder = { link = "TelescopeResultsBorder" },
+                        -- NeoTreeGitConflict = { fg = colors.red },
+                        -- NeoTreeGitDeleted = { fg = colors.red },
+                        -- NeoTreeGitIgnored = { fg = colors.overlay0 },
+                        -- NeoTreeGitModified = { fg = colors.peach },
+                        -- NeoTreeGitStaged = { fg = colors.green },
+                        -- NeoTreeGitUnstaged = { fg = colors.red },
+                        -- NeoTreeGitUntracked = { fg = colors.green },
+                        -- NeoTreeIndent = { fg = colors.surface1 },
+                        -- NeoTreeNormal = { bg = colors.mantle },
+                        -- NeoTreeNormalNC = { bg = colors.mantle },
+                        -- NeoTreeRootName = { fg = colors.subtext1, style = { "bold" } },
+                        -- NeoTreeTabActive = { fg = colors.text, bg = colors.mantle },
+                        -- NeoTreeTabInactive = { fg = colors.surface2, bg = colors.crust },
+                        -- NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
+                        -- NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
+                        -- NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
                         NormalFloat = { bg = colors.base },
                         Pmenu = { bg = colors.mantle, fg = "" },
                         PmenuSel = { bg = colors.surface0, fg = "" },
