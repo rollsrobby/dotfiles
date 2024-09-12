@@ -32,7 +32,7 @@ return {
 			vim.keymap.set('n', '<leader>gf', function()
 				vim.lsp.buf.format({
 					async = true,
-					filter = function(client) return client.name ~= 'tsserver' end
+					filter = function(client) return client.name ~= 'ts_ls' end
 				})
 			end, opts)
 			-- vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, opts)
@@ -57,7 +57,7 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- local serversWithDefaultConfig = { 'eslint', 'tsserver', 'tailwindcss', 'omnisharp', 'csharp_ls' }
-		local serversWithDefaultConfig = { 'biome', 'tsserver', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls', 'marksman' }
+		local serversWithDefaultConfig = { 'biome', 'ts_ls', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls', 'marksman' }
 
 		for _, lsp in ipairs(serversWithDefaultConfig) do
 			lspconfig[lsp].setup({
