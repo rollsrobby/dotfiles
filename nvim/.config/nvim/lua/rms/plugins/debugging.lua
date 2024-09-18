@@ -91,15 +91,22 @@ return {
           csproj_handle:close()
           local project_name = csproj_file:gsub("%.csrpoj", "")
 
-          local framework_handle = io.popen('ls bin/Debug/')
-          local framework = 'net8.0';
-          if framework_handle ~= nil then
-            local framework_result = framework_handle:read("*a")
-            framework_handle:close()
-            framework = vim.split(framework_result, "\n")[1]
-          end
+          local is_function = io.open('host.json') ~= nil
 
-          local dll_path = 'bin/Debug/' .. framework .. '/' .. project_name .. '.dll'
+          local dll_path
+          if is_function then
+            dll_path = 'bin/output/' .. project_name .. '.dll'
+          else
+            local framework_handle = io.popen('ls bin/Debug/')
+            local framework = 'net8.0';
+            if framework_handle ~= nil then
+              local framework_result = framework_handle:read("*a")
+              framework_handle:close()
+              framework = vim.split(framework_result, "\n")[1]
+            end
+
+            dll_path = 'bin/Debug/' .. framework .. '/' .. project_name .. '.dll'
+          end
           return dll_path
         end,
       }
