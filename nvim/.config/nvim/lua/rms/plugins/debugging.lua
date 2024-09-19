@@ -109,6 +109,9 @@ return {
           end
           return dll_path
         end,
+        env = {
+          ASPNETCORE_ENVIRONMENT = 'Development'
+        }
       }
     }
 
