@@ -35,20 +35,20 @@ map("v", "p", '"_dP', opts)
 map("n", "x", '"_x', opts)
 
 -- Buffer naivation
-map("n", "<leader>bn", "<cmd>bn<CR>", opts)
-map("n", "<leader>bp", "<cmd>bp<CR>", opts)
+map("n", "<leader>bn", "<cmd>bn<CR>", { noremap = true, silent = true, desc = 'Buffer next' })
+map("n", "<leader>bp", "<cmd>bp<CR>", { noremap = true, silent = true, desc = 'Buffer prev' })
 
 -- split and close
-map("n", "<leader>ss", "<cmd>split<CR><C-w>w", opts)
-map("n", "<leader>sv", "<cmd>vsplit<CR><C-w>w", opts)
-map("n", "<leader>sh", "30<C-w><", opts)
-map("n", "<leader>sl", "30<C-w>>", opts)
-map("n", "<leader>sj", "30<C-w>+", opts)
-map("n", "<leader>sk", "30<C-w>-", opts)
+map("n", "<leader>ss", "<cmd>split<CR><C-w>w", { noremap = true, silent = true, desc = 'Split horizontal' })
+map("n", "<leader>sv", "<cmd>vsplit<CR><C-w>w", { noremap = true, silent = true, desc = 'Split vertical' })
+map("n", "<leader>sh", "4<C-w><", { noremap = true, silent = true, desc = 'Resize left' })
+map("n", "<leader>sl", "4<C-w>>", { noremap = true, silent = true, desc = 'Resize right' })
+map("n", "<leader>sj", "4<C-w>+", { noremap = true, silent = true, desc = 'Resize down' })
+map("n", "<leader>sk", "4<C-w>-", { noremap = true, silent = true, desc = 'Resize up' })
 -- map("n", "<leader>sqf", "<cmd>bd<CR>", opts)
 -- map("n", "<leader>sqa", "<cmd>qa<cr>", opts)
 --
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+map("n", "<leader>h", "<cmd>nohlsearch<CR>", { noremap = true, silent = true, desc = 'Remove search highlight' })
 
 map("n", "<C-t>", "<cmd>tabnew<CR>", opts)
 map("n", "H", "<cmd>tabprevious<cr>", opts)
