@@ -9,10 +9,9 @@ return {
 	},
 	config = function()
 		local telescope = require('telescope')
-
 		telescope.setup({
 			defaults = {
-				path_display = { 'filename_first' },
+				path_display = { 'truncate' },
 			},
 			extensions = {
 				fzf = {
