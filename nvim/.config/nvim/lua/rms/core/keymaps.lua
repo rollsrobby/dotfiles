@@ -43,8 +43,8 @@ map("n", "<leader>ss", "<cmd>split<CR><C-w>w", { noremap = true, silent = true, 
 map("n", "<leader>sv", "<cmd>vsplit<CR><C-w>w", { noremap = true, silent = true, desc = 'Split vertical' })
 map("n", "<leader>sh", "4<C-w><", { noremap = true, silent = true, desc = 'Resize left' })
 map("n", "<leader>sl", "4<C-w>>", { noremap = true, silent = true, desc = 'Resize right' })
-map("n", "<leader>sj", "4<C-w>+", { noremap = true, silent = true, desc = 'Resize down' })
-map("n", "<leader>sk", "4<C-w>-", { noremap = true, silent = true, desc = 'Resize up' })
+map("n", "<leader>sk", "4<C-w>+", { noremap = true, silent = true, desc = 'Resize down' })
+map("n", "<leader>sj", "4<C-w>-", { noremap = true, silent = true, desc = 'Resize up' })
 -- map("n", "<leader>sqf", "<cmd>bd<CR>", opts)
 -- map("n", "<leader>sqa", "<cmd>qa<cr>", opts)
 --
