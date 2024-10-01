@@ -173,6 +173,14 @@ if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = ['move-node-to-workspace C']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = ['move-node-to-workspace C']
+
+[[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = ['move-node-to-workspace C']
 
