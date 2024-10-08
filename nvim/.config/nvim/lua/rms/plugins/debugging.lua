@@ -73,13 +73,20 @@ return {
 
     dap.adapters.coreclr = {
       type = 'executable',
-      command = '/Users/rms/.local/share/nvim/mason/bin/netcoredbg',
+      command = '/Users/rms/Code/netcoredbg/netcoredbg',
+      -- command = '/Users/rms/.local/share/nvim/mason/bin/netcoredbg',
       arg = { '--interpreter=vscode' }
     }
 
     dap.configurations.cs = {
       {
-        typ = 'coreclr',
+        type = 'coreclr',
+        name = 'attach to azure function',
+        request = 'attach',
+        processId = require('dap.utils').pick_process,
+      },
+      {
+        type = 'coreclr',
         name = 'launch - netcoredbg',
         request = 'launch',
         program = function()
@@ -112,60 +119,61 @@ return {
         env = {
           ASPNETCORE_ENVIRONMENT = 'Development'
         }
-      }
+      },
     }
 
-    for _, language in ipairs(js_based_languages) do
-      dap.configurations[language] = {
-        -- Debug nodejs processes (make sure to add --inspect when you run the process)
-        {
-          type = "pwa-node",
-          request = "attach",
-          name = "Attach",
-          processId = require("dap.utils").pick_process,
-          cwd = function()
-            return vim.fn.input('Working directory: ', vim.fn.getcwd(), 'file')
-          end,
-          port = 9230,
-          sourceMaps = true,
-        },
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          cwd = vim.fn.getcwd(),
-          sourceMaps = true,
-        },
-        -- Debug web applications (client side)
-        {
-          type = "pwa-chrome",
-          request = "launch",
-          name = "Launch & Debug Chrome",
-          url = function()
-            local co = coroutine.running()
-            return coroutine.create(function()
-              vim.ui.input({
-                prompt = "Enter URL: ",
-                default = "http://localhost:3000",
-              }, function(url)
-                if url == nil or url == "" then
-                  return
-                else
-                  coroutine.resume(co, url)
-                end
-              end)
-            end)
-          end,
-          webRoot = vim.fn.getcwd(),
-          protocol = "inspector",
-          sourceMaps = true,
-          userDataDir = false,
-        },
-      }
-    end
+    -- for _, language in ipairs(js_based_languages) do
+    --   dap.configurations[language] = {
+    --     -- Debug nodejs processes (make sure to add --inspect when you run the process)
+    --     {
+    --       type = "pwa-node",
+    --       request = "attach",
+    --       name = "Attach",
+    --       processId = require("dap.utils").pick_process,
+    --       cwd = function()
+    --         return vim.fn.input('Working directory: ', vim.fn.getcwd(), 'file')
+    --       end,
+    --       port = 9230,
+    --       sourceMaps = true,
+    --     },
+    --     {
+    --       type = "pwa-node",
+    --       request = "launch",
+    --       name = "Launch file",
+    --       program = "${file}",
+    --       cwd = vim.fn.getcwd(),
+    --       sourceMaps = true,
+    --     },
+    --     -- Debug web applications (client side)
+    --     {
+    --       type = "pwa-chrome",
+    --       request = "launch",
+    --       name = "Launch & Debug Chrome",
+    --       url = function()
+    --         local co = coroutine.running()
+    --         return coroutine.create(function()
+    --           vim.ui.input({
+    --             prompt = "Enter URL: ",
+    --             default = "http://localhost:3000",
+    --           }, function(url)
+    --             if url == nil or url == "" then
+    --               return
+    --             else
+    --               coroutine.resume(co, url)
+    --             end
+    --           end)
+    --         end)
+    --       end,
+    --       webRoot = vim.fn.getcwd(),
+    --       protocol = "inspector",
+    --       sourceMaps = true,
+    --       userDataDir = false,
+    --     },
+    --   }
+    -- end
 
     -- dap.setup({})
+
     dapui.setup({})
 
     dap.listeners.before.attach.dapui_config = function()
