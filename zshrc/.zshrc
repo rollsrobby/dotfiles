@@ -5,7 +5,7 @@ export DISABLE_AUTO_TITLE='true'
 
 setopt NO_CASE_GLOB
 
-export EDITOR=neovim
+export EDITOR=nvim
 
 # fcd() {
 #   local dir
