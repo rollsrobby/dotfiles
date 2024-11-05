@@ -32,3 +32,6 @@ disabled=false
 [kubernetes]
 disabled = true
 detect_files = ['manifest.yaml']
+
+[direnv]
+disabled = false
