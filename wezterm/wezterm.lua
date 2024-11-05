@@ -1,13 +1,14 @@
 local wezterm = require 'wezterm'
 return {
   color_scheme = 'Gruvbox dark, medium (base16)',
+  -- nix fix
+  -- front_end = 'WebGpu',
   colors = {
     background = '#1d2021',
   },
   enable_tab_bar = false,
   font_size = 16.0,
   font = wezterm.font('JetBrains Mono', { weight = 'Medium' }),
-  -- font = wezterm.font('GeistMono Nerd Font', { weight = 'Medium' }),
   -- macos_window_background_blur = 30,
   -- window_background_opacity = 0.9,
   window_decorations = 'RESIZE',
