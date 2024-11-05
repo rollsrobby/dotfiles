@@ -7,4 +7,6 @@ config:
 icons:
   zsh: "" # overwrite with your own symbol (Nerd Font icon, emoji, whatever!)
   bun: ""
+  func: "󰡱"
+  dotnet: ""
   cmatrix: "🤯" # add new entries that aren't included
