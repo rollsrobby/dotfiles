@@ -31,12 +31,14 @@ alias c='clear'
 alias bud='brew update'
 alias bug='brew upgrade'
 alias bo='brew outdated --verbose'
-alias pi='pnpm install'
-alias pd='pnpm dev'
-alias po='pnpm outdated -r'
-alias pb='pnpm build'
-alias pc='pnpm clean && pnpm clean:workspaces'
+# alias pi='pnpm install'
+# alias pd='pnpm dev'
+# alias po='pnpm outdated -r'
+# alias pb='pnpm build'
+# alias pc='pnpm clean && pnpm clean:workspaces'
 alias azs='azurite -l $TMPDIR/azurite -s'
+# start dev shell
+alias ds='nix develop -c $SHELL'
 
 if [[ -x "$(command -v bat)" ]]; then
 	alias cat="bat"
@@ -111,6 +113,23 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
+
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
 
 # bun completions
 [ -s "/Users/rms/.bun/_bun" ] && source "/Users/rms/.bun/_bun"
