@@ -32,11 +32,9 @@ return {
       vim.keymap.set('n', '<leader>gf', function()
         vim.lsp.buf.format({
           async = true,
-          filter = function(client) return client.name ~= 'ts_ls' end
+          -- filter = function(client) return client.name ~= 'ts_ls' end
         })
       end, opts)
-      -- vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, opts)
-      -- vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, opts)
     end
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -56,8 +54,8 @@ return {
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- local serversWithDefaultConfig = { 'eslint', 'tsserver', 'tailwindcss', 'omnisharp', 'csharp_ls' }
-    local serversWithDefaultConfig = { 'biome', 'ts_ls', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls', 'marksman', 'mdx_analyzer' }
+    local serversWithDefaultConfig = { 'biome', 'ts_ls', 'tailwindcss', 'eslint', 'astro', 'jsonls', 'yamlls', 'marksman',
+      'mdx_analyzer', 'lua_ls' }
 
     for _, lsp in ipairs(serversWithDefaultConfig) do
       lspconfig[lsp].setup({
@@ -65,31 +63,6 @@ return {
         on_attach = on_attach,
       })
     end
-
-    -- lspconfig.csharp_ls.setup({
-    -- 	capabilities = capabilities,
-    -- 	on_attach = on_attach,
-    -- 	handlers = {
-    -- 		["textDocument/definition"] = require('csharpls_extended').handler,
-    -- 		["textDocument/typeDefinition"] = require('csharpls_extended').handler,
-    -- 	},
-    -- })
-
-    -- lspconfig['omnisharp'].setup({
-    -- 	capabilities = capabilities,
-    -- 	on_attach = function(client, bufnr)
-    -- 		on_attach(client, bufnr)
-    -- 		local opts = { noremap = true, silent = true, buffer = bufnr }
-    -- 		vim.keymap.set('n', 'gd', "<cmd>lua require('omnisharp_extended').telescope_lsp_definition()<cr>", opts)
-    -- 		vim.keymap.set('n', 'gT', "<cmd>lua require('omnisharp_extended').telescope_lsp_type_definition()<cr>", opts)
-    -- 		vim.keymap.set('n', 'gr', "<cmd>lua require('omnisharp_extended').telescope_lsp_references()<cr>", opts)
-    -- 		vim.keymap.set('n', 'gi', "<cmd>lua require('omnisharp_extended').telescope_lsp_implementation()<cr>", opts)
-    -- 	end,
-    -- 	-- cmd = { '/Users/rms/.local/share/nvim/mason/bin/omnisharp' },
-    -- 	-- filetypes = { 'cs' },
-    -- 	-- root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj', 'project.json', '.git'),
-    -- 	-- handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler },
-    -- })
 
     lspconfig['lua_ls'].setup({
       capabilities = capabilities,
