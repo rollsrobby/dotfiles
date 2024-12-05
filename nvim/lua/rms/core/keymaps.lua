@@ -48,7 +48,7 @@ map("n", "<leader>sj", "4<C-w>-", { noremap = true, silent = true, desc = 'Resiz
 -- map("n", "<leader>sqf", "<cmd>bd<CR>", opts)
 -- map("n", "<leader>sqa", "<cmd>qa<cr>", opts)
 --
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", { noremap = true, silent = true, desc = 'Remove search highlight' })
+map("n", "<esc>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true, desc = 'Remove search highlight' })
 
 map("n", "<C-t>", "<cmd>tabnew<CR>", opts)
 map("n", "H", "<cmd>tabprevious<cr>", opts)
