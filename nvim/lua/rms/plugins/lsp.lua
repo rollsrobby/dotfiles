@@ -1,8 +1,8 @@
 return {
   'williamboman/mason.nvim',
   dependencies = {
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp'
   },
   -- event = { 'BufReadPre', 'BufNewFile' },
@@ -19,6 +19,24 @@ return {
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "rounded",
+    })
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client then return end
+        -- if client.supports_method('textDocument/completion') then
+        --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+        -- end
+        if client.supports_method('textDocument/formatting') then
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = args.buf,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = args.buf, client = client.id })
+            end
+          })
+        end
+      end
     })
 
     local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
@@ -49,7 +67,7 @@ return {
 
 
     local handlers = {
-      function (server_name)
+      function(server_name)
         require('lspconfig')[server_name].setup({
           capabilities = capabilities,
           on_attach = on_attach
@@ -58,7 +76,7 @@ return {
       ['lua_ls'] = function()
         local lspconfig = require('lspconfig')
         lspconfig.lua_ls.setup({
-          settings = { 
+          settings = {
             Lua = {
               diagnostics = {
                 globals = { 'vim' },
@@ -72,6 +90,5 @@ return {
       automatic_installation = true,
       handlers = handlers
     })
-
   end
 }
