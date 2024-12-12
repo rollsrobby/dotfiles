@@ -87,6 +87,7 @@ return {
       end
     }
     require('mason-lspconfig').setup({
+      -- ensure_installed = { 'lua_ls', 'nil_ls', 'ts_ls' },
       automatic_installation = true,
       handlers = handlers
     })
