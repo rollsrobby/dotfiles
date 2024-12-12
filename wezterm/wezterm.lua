@@ -27,4 +27,5 @@ return {
       action = wezterm.action.OpenLinkAtMouseCursor,
     },
   },
+  max_fps = 120
 }
