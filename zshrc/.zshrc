@@ -22,6 +22,7 @@ alias bud='brew update'
 alias bug='brew upgrade'
 alias bo='brew outdated --verbose'
 alias azs='azurite -l $TMPDIR/azurite -s'
+alias fs='dotnet clean && func start'
 # start dev shell
 alias ds='nix develop -c $SHELL'
 
