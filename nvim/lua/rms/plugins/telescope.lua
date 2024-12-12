@@ -26,16 +26,23 @@ return {
     telescope.load_extension('fzf')
     telescope.load_extension('dap')
     telescope.load_extension('git_worktree')
-    vim.keymap.set('n', '<leader>gw', function() telescope.extensions.git_worktree.git_worktree() end, { desc = 'List worktrees' })
-    vim.keymap.set('n', '<leader>gn', function() telescope.extensions.git_worktree.create_git_worktree() end, { desc = 'Create new worktree' })
+    vim.keymap.set('n', '<leader>gw', function() telescope.extensions.git_worktree.git_worktree() end,
+      { desc = 'List worktrees' })
+    vim.keymap.set('n', '<leader>gn', function() telescope.extensions.git_worktree.create_git_worktree() end,
+      { desc = 'Create new worktree' })
 
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>fa', builtin.find_files, { desc = 'Find all Files' })
+    vim.keymap.set('n', '<leader>fd', builtin.find_files, { desc = 'Find in directory' })
+    vim.keymap.set('n', '<leader>fn', function()
+      builtin.find_files({
+        cwd = vim.fn.stdpath('config')
+      })
+    end, { desc = 'Find in directory' })
     vim.keymap.set('n', '<leader>ff', builtin.git_files, { desc = 'Find git Files' })
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find in Files' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Grep in files' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find help tags' })
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
+    vim.keymap.set('n', '<leader>fx', builtin.diagnostics, { desc = 'Find Diagnostics' })
     vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = 'Find String' })
 
 
