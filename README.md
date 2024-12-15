@@ -1,1 +1,1 @@
-dotfiles using gnu stow
+dotfiles
