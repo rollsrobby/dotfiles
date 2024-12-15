@@ -15,7 +15,7 @@ startup_command = "nix develop -c $SHELL"
 
 [[session]]
 name = "Portal"
-path = "~/code/sml-portal"
+path = "~/code/sml-portal/dev"
 startup_command = "nix develop -c $SHELL"
 
 [[session]]
@@ -25,7 +25,7 @@ startup_command = "nix develop -c $SHELL"
 
 [[session]]
 name = "Api"
-path = "~/code/sml-api"
+path = "~/code/sml-api/dev"
 startup_command = "nix develop -c $SHELL"
 
 [[session]]
