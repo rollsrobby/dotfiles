@@ -1,0 +1,65 @@
+[[session]]
+name = "Database"
+path = "~/"
+startup_command = "nvim -c ':DBUIToggle'"
+
+[[session]]
+name = "Admin"
+path = "~/code/sml/dev/src/admin"
+startup_command = "nix develop -c $SHELL"
+
+[[session]]
+name = "TeamsApp"
+path = "~/code/sml/dev/src/teams-app"
+startup_command = "nix develop -c $SHELL"
+
+[[session]]
+name = "Portal"
+path = "~/code/sml-portal"
+startup_command = "nix develop -c $SHELL"
+
+[[session]]
+name = "Agent"
+path = "~/code/sml-agent/dev"
+startup_command = "nix develop -c $SHELL"
+
+[[session]]
+name = "Api"
+path = "~/code/sml-api"
+startup_command = "nix develop -c $SHELL"
+
+[[session]]
+name = "http"
+path = "~/code/http"
+startup_command = "nvim ."
+
+[[session]]
+name = "zsh"
+path = "~/"
+startup_command = "nvim .zshrc"
+
+[[session]]
+name = "nvim"
+path = "~/.config/nvim"
+startup_command = "nvim ."
+
+[[session]]
+name = "tmux"
+path = "~/.config/tmux"
+startup_command = "nvim tmux.conf"
+
+[[session]]
+name = "sesh"
+path = "~/.config/sesh"
+startup_command = "nvim sesh.toml"
+
+[[session]]
+name = "nix-darwin"
+path = "~/.config/nix-darwin"
+startup_command = "nvim ."
+
+[[session]]
+name = "Downloads"
+path = "~/Downloads"
+startup_command = "yazi"
+
