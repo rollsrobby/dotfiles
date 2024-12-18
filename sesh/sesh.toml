@@ -1,4 +1,9 @@
 [[session]]
+name = "Dotfiles"
+path = "~/dotfiles"
+startup_command = "nvim ."
+
+[[session]]
 name = "Database"
 path = "~/"
 startup_command = "nvim -c ':DBUIToggle'"
@@ -6,37 +11,27 @@ startup_command = "nvim -c ':DBUIToggle'"
 [[session]]
 name = "Admin"
 path = "~/code/sml/dev/src/admin"
-startup_command = "nix develop -c $SHELL"
 
 [[session]]
 name = "TeamsApp"
 path = "~/code/sml/dev/src/teams-app"
-startup_command = "nix develop -c $SHELL"
 
-[[session]]
-name = "Portal"
-path = "~/code/sml-portal/dev"
-startup_command = "nix develop -c $SHELL"
+# [[session]]
+# name = "Portal"
+# path = "~/code/sml-portal"
 
-[[session]]
-name = "Agent"
-path = "~/code/sml-agent/dev"
-startup_command = "nix develop -c $SHELL"
+# [[session]]
+# name = "Agent"
+# path = "~/code/sml-agent"
 
-[[session]]
-name = "Api"
-path = "~/code/sml-api/dev"
-startup_command = "nix develop -c $SHELL"
+# [[session]]
+# name = "Api"
+# path = "~/code/sml-api/dev"
 
 [[session]]
 name = "http"
 path = "~/code/http"
 startup_command = "nvim ."
-
-[[session]]
-name = "zsh"
-path = "~/"
-startup_command = "nvim .zshrc"
 
 [[session]]
 name = "nvim"
@@ -63,3 +58,7 @@ name = "Downloads"
 path = "~/Downloads"
 startup_command = "yazi"
 
+[[session]]
+name = "notes"
+path = "~/code/notes"
+startup_command = "nvim ."
