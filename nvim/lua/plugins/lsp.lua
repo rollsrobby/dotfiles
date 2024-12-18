@@ -1,9 +1,8 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
+      "saghen/blink.cmp",
       "folke/lazydev.nvim",
       ft = "lua",
       opts = {
@@ -13,7 +12,7 @@ return {
       },
     },
     config = function()
-      require("mason").setup({})
+      local lspconfig = require('lspconfig');
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
@@ -33,7 +32,14 @@ return {
         end
       })
 
-      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+      for type, icon in pairs(signs) do
+        local hl = 'DiagnosticSign' .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+      end
+
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities();
       local on_attach = function(_, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -54,42 +60,30 @@ return {
       end
 
 
-      local handlers = {
-        function(server_name)
-          require('lspconfig')[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach
-          })
-        end,
-        ['lua_ls'] = function()
-        local lspconfig = require('lspconfig');
-          lspconfig.lua_ls.setup({
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { 'vim' },
-                },
-              }
-            }
-          });
-        end,
-        ['nil_ls'] = function()
-        local lspconfig = require('lspconfig');
-          lspconfig.nil_ls.setup({
-            settings = {
-              ['nil'] = {
-                formatting = {
-                  command = { "nixfmt" },
-                },
-              },
+      lspconfig.biome.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim", "Snacks" },
             },
-          });
-        end
-      }
-      require('mason-lspconfig').setup({
-        automatic_installation = true,
-        handlers = handlers
-      })
+          }
+        }
+      });
+      lspconfig.nil_ls.setup({
+        settings = {
+          ['nil'] = {
+            formatting = {
+              command = { "nixfmt" },
+            },
+          },
+        },
+      });
     end
   }
 }
