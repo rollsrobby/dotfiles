@@ -16,17 +16,17 @@ path = "~/code/sml/dev/src/admin"
 name = "TeamsApp"
 path = "~/code/sml/dev/src/teams-app"
 
-# [[session]]
-# name = "Portal"
-# path = "~/code/sml-portal"
+[[session]]
+name = "Portal"
+path = "~/code/sml-portal/dev"
 
-# [[session]]
-# name = "Agent"
-# path = "~/code/sml-agent"
+[[session]]
+name = "Agent"
+path = "~/code/sml-agent/dev"
 
-# [[session]]
-# name = "Api"
-# path = "~/code/sml-api/dev"
+[[session]]
+name = "Api"
+path = "~/code/sml-api/dev"
 
 [[session]]
 name = "http"
