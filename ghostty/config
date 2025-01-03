@@ -1,0 +1,8 @@
+font-family = Geist Mono
+font-size = 15
+
+theme = tokyonight-storm
+
+mouse-hide-while-typing = true
+macos-titlebar-style = tabs
+macos-option-as-alt = true
