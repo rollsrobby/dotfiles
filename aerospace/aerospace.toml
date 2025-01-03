@@ -171,6 +171,10 @@ if.app-id = 'net.kovidgoyal.kitty'
 run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
+if.app-id = 'com.michellh.ghostty'
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace T']
 
