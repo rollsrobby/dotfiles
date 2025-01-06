@@ -63,6 +63,7 @@
             "alfred"
             "bartender"
             "boop"
+            "expressvpn"
             "ghostty"
             "karabiner-elements"
             "logi-options+"
