@@ -18,6 +18,9 @@ return {
           diagnostics = {
             theme = "ivy"
           },
+          live_grep = {
+            theme = "ivy"
+          },
         },
         extensions = {
           fzf = {}

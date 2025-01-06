@@ -76,6 +76,10 @@
       # interactiveShellInit = ''
       #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh'
       # '';
+      sessionVariables = {
+        EDITOR="nvim";
+      };
+
   };
 
   programs = {
