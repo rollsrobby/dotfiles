@@ -2,14 +2,28 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "saghen/blink.cmp",
-      "folke/lazydev.nvim",
-      ft = "lua",
-      opts = {
-        library = {
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      {
+        "saghen/blink.cmp",
+      },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
         },
       },
+      {
+        "seblj/roslyn.nvim",
+        ft = "cs",
+        -- opts = {
+        --   exe = "Microsoft.CodeAnalysis.LanguageServer",
+        -- },
+        -- config = fuction()
+        --   require("roslyn").setup({});
+        -- end
+      }
     },
     config = function()
       local lspconfig = require('lspconfig');
@@ -64,6 +78,7 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+      -- lspconfig.roslyn.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
@@ -84,6 +99,10 @@ return {
           },
         },
       });
+      require("roslyn").setup({
+        exe = "Microsoft.CodeAnalysis.LanguageServer",
+        on_attach = on_attach,
+      })
     end
   }
 }
