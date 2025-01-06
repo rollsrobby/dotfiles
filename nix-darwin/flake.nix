@@ -38,6 +38,7 @@
         libunistring
         ninja
         neovim
+        ngrok
         ripgrep
         sesh
         starship
