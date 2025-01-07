@@ -20,9 +20,27 @@ return {
         -- opts = {
         --   exe = "Microsoft.CodeAnalysis.LanguageServer",
         -- },
-        -- config = fuction()
-        --   require("roslyn").setup({});
-        -- end
+        config = function()
+          require("roslyn").setup({
+            exe = "Microsoft.CodeAnalysis.LanguageServer",
+          });
+          local opts = { noremap = true, silent = true }
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+          vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
+          vim.keymap.set('n', 'gT', '<cmd>Telescope lsp_type_definitions<CR>', opts)
+          vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, opts)
+          vim.keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
+          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+          vim.keymap.set('n', '<leader>gf', function()
+            vim.lsp.buf.format({
+              async = true,
+            })
+          end, opts)
+        end
       }
     },
     config = function()
@@ -78,7 +96,7 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-      -- lspconfig.roslyn.setup({ capabilities = capabilities, on_attach = on_attach })
+      -- lspconfig.roslyn_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
@@ -99,10 +117,10 @@ return {
           },
         },
       });
-      require("roslyn").setup({
-        exe = "Microsoft.CodeAnalysis.LanguageServer",
-        on_attach = on_attach,
-      })
+      -- require("roslyn").setup({
+      --   exe = "Microsoft.CodeAnalysis.LanguageServer",
+      --   on_attach = on_attach,
+      -- })
     end
   }
 }
