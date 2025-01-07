@@ -53,6 +53,7 @@
     };
 
     initExtra = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       eval "$(starship init zsh)"
       eval "$(thefuck --alias)"
       function sesh-sessions() {
@@ -73,9 +74,6 @@
       bindkey -M viins '\es' sesh-sessions    
       '';
 
-      # interactiveShellInit = ''
-      #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh'
-      # '';
       sessionVariables = {
         EDITOR="nvim";
       };
@@ -94,18 +92,4 @@
       ];
     };
   };
-
-  # home.file."/Library/Keyboard Layouts/EurKEY.icns" = {
-  #   source = pkgs.fetchurl {
-  #     url = "https://github.com/lbschenkel/EurKEY-Mac/blob/a633b854679b7d8f8be56b724b712b5d2a02a038/EurKEY.icns";
-  #     sha256 = "sha256-D6EslCodXnZg4CobJKtNNcDoATBUuAiYjX7x0LbTnYA=";
-  #   };
-  # };
-  #
-  # home.file."/Library/Keyboard Layouts/EurKEY.keylayout" = {
-  #   source = pkgs.fetchurl {
-  #     url = " https://github.com/lbschenkel/EurKEY-Mac/blob/a633b854679b7d8f8be56b724b712b5d2a02a038/EurKEY.keylayout ";
-  #     sha256 = "sha256-1hmjrQTyOtqZzlzf8OeKJaHUsm2CVClRILQfFXAAvRA=";
-  #   };
-  # };
 }
