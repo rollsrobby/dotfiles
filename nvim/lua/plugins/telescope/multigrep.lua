@@ -24,7 +24,7 @@ local live_multigrep = function(opts)
       end
 
       if pieces[2] then
-        table.insert (args, "-g")
+        table.insert(args, "-g")
         table.insert(args, pieces[2])
       end
 
@@ -48,7 +48,7 @@ local live_multigrep = function(opts)
 end
 
 M.setup = function()
-  vim.keymap.set("n", "<leader>fg", live_multigrep(), { desc = 'Grep in files (Multi grep)' })
+  vim.keymap.set("n", "<leader>fg", live_multigrep, { desc = 'Grep in files (Multi grep)' })
 end
 
 return M
