@@ -9,6 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util, nix-homebrew, ... }:
@@ -26,18 +27,12 @@
         bat
         cargo
         colima
-        cmake
-        curl
         docker
         eza
         fzf
-        gettext
-        # ghostty
         git
         lazygit
-        libunistring
-        ninja
-        neovim
+        inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ngrok
         ripgrep
         sesh
@@ -53,7 +48,7 @@
         wezterm
         yazi
         yq
-        zsh-vi-mode
+        # zsh-vi-mode
         ];
 
       homebrew = {
@@ -116,9 +111,6 @@
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
-
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -128,11 +120,6 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
-
-
-      # programs.zsh.interactiveShellInit = ''
-      #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh'
-      # '';
 
       users.users.rms.home = "/Users/rms";
     };
