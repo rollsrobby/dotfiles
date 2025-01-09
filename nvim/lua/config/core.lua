@@ -33,6 +33,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Stay centered when moving down
 vim.keymap.set("v", "p", '"_dP', { desc = "Do not yank on paste", noremap = true, silent = true })
 vim.keymap.set("n", "x", '"_x', { desc = "Do not yank on delete", silent = true })
 
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Remove search highlight", noremap = false, silent = true })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlights-yank', { clear = true }),
