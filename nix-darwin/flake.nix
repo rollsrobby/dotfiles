@@ -24,31 +24,24 @@
         with pkgs; [ 
         aerospace
         azurite
-        bat
         cargo
         colima
         docker
-        eza
-        fzf
         git
         lazygit
-        inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+        neovim
+        # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ngrok
-        ripgrep
         sesh
-        starship
         tailwindcss-language-server
         lua-language-server
         nil
-        thefuck
         tmux
         typescript
         typescript-language-server
         vscode-langservers-extracted
         wezterm
-        yazi
         yq
-        # zsh-vi-mode
         ];
 
       homebrew = {
@@ -60,6 +53,7 @@
             "boop"
             "expressvpn"
             "ghostty"
+            "homerow"
             "karabiner-elements"
             "logi-options+"
             "onedrive"
