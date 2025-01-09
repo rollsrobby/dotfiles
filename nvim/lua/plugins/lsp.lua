@@ -53,7 +53,7 @@ return {
           -- if client.supports_method('textDocument/completion') then
           --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
           -- end
-          if client.supports_method('textDocument/formatting') then
+          if client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = args.buf,
               callback = function()
@@ -65,10 +65,16 @@ return {
       })
 
       local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
-      for type, icon in pairs(signs) do
-        local hl = 'DiagnosticSign' .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = signs.Error,
+            [vim.diagnostic.severity.WARN] = signs.Warn,
+            [vim.diagnostic.severity.HINT] = signs.Hint,
+            [vim.diagnostic.severity.INFO] = signs.Info,
+          }
+        }
+      })
 
       -- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local capabilities = require('blink.cmp').get_lsp_capabilities();
