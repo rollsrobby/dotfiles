@@ -39,7 +39,7 @@ return {
       -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Grep in files' })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
-      vim.keymap.set("n", "<leader>fx", builtin.diagnostics, { desc = "Find Diagnostics" })
+      -- vim.keymap.set("n", "<leader>fx", builtin.diagnostics, { desc = "Find Diagnostics" })
       vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find String" })
 
       require("plugins.telescope.multigrep").setup()
