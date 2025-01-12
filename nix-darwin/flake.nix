@@ -29,8 +29,8 @@
         docker
         git
         lazygit
-        neovim
-        # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+        # neovim
+        inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ngrok
         sesh
         tailwindcss-language-server
