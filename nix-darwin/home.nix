@@ -76,8 +76,14 @@
       enable = true;
     };
 
-    jq = {
+    direnv = {
       enable = true;
+      nix-direnv.enable = true;
+    };
+
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
     };
 
     fzf = {
@@ -85,9 +91,20 @@
       enableZshIntegration = true;
     };
 
-    eza = {
+    gh = {
       enable = true;
-      enableZshIntegration = true;
+    };
+
+    gh-dash = {
+      enable = true;
+    };
+
+    jq = {
+      enable = true;
+    };
+
+    ripgrep = {
+      enable = true;
     };
 
     starship = {
@@ -99,18 +116,9 @@
       enableZshIntegration = true;
     };
 
-    ripgrep = {
-      enable = true;
-    };
-
     yazi = {
       enable = true;
       enableZshIntegration = true;
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
     };
 
     zoxide = {
