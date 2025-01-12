@@ -67,3 +67,7 @@ startup_command = "yazi"
 name = "notes"
 path = "~/code/notes"
 startup_command = "nvim ."
+
+[[session]]
+name = "pnp"
+path = "~/code/pnpcore"
