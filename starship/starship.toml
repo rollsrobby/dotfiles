@@ -1,5 +1,5 @@
 # Inserts  blank line between shell prompts
-add_newline = false 
+add_newline = true 
 
 format = "$all"
 
@@ -35,3 +35,7 @@ detect_files = ['manifest.yaml']
 
 [direnv]
 disabled = false
+
+[dotnet]
+disabled = false
+style = 'bold green'
