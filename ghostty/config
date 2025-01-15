@@ -5,3 +5,5 @@ theme = tokyonight-storm
 
 mouse-hide-while-typing = true
 macos-option-as-alt = true
+macos-window-shadow = false
+macos-secure-input-indication = true
