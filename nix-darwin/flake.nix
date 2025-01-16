@@ -87,6 +87,7 @@
           # smb.NetBIOSName = "rms-mbp";
           trackpad.Clicking = true;
           finder = {
+            _FXSortFoldersFirst = true;
             FXPreferredViewStyle = "Nlsv";
             AppleShowAllExtensions = true;
             ShowPathbar = true;
