@@ -56,6 +56,7 @@
             "homerow"
             "karabiner-elements"
             "logi-options+"
+            "microsoft-azure-storage-explorer"
             "onedrive"
             "whatsapp"
         ];
@@ -64,9 +65,10 @@
       security.pam.enableSudoTouchIdAuth = true;
 	      system.defaults = {
           NSGlobalDomain = {
+            AppleShowAllExtensions = true;
             InitialKeyRepeat = 15;
             KeyRepeat = 2;
-            AppleShowAllExtensions = true;
+            NSAutomaticSpellingCorrectionEnabled = false;
             "com.apple.mouse.tapBehavior" = 1;
             "com.apple.swipescrolldirection" = false;
           };
