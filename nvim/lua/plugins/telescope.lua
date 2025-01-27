@@ -42,7 +42,7 @@ return {
       -- vim.keymap.set("n", "<leader>fx", builtin.diagnostics, { desc = "Find Diagnostics" })
       vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find String" })
 
-      require("plugins.telescope.multigrep").setup()
+      require("plugins.telescope.multigrep").setup(require('telescope.themes').get_ivy())
     end
   }
 }

@@ -47,8 +47,8 @@ local live_multigrep = function(opts)
   }):find()
 end
 
-M.setup = function()
-  vim.keymap.set("n", "<leader>fg", live_multigrep, { desc = 'Grep in files (Multi grep)' })
+M.setup = function(opts)
+  vim.keymap.set("n", "<leader>fg", function() live_multigrep(opts) end, { desc = 'Grep in files (Multi grep)' })
 end
 
 return M
