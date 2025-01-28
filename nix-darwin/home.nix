@@ -32,6 +32,8 @@
         c="clear";
         p="pnpm";
         b="bun";
+        k="kubectl";
+        d="docker";
         azs="azurite -l $TMPDIR/azurite -s";
         ".."="cd ..";
         "...."="cd ../..";
