@@ -9,12 +9,8 @@ path = "~/tools/dbui"
 startup_command = "nvim -c ':DBUIToggle'"
 
 [[session]]
-name = "Admin"
-path = "~/code/sml/dev/src/admin"
-
-[[session]]
-name = "TeamsApp"
-path = "~/code/sml/dev/src/teams-app"
+name = "sml"
+path = "~/code/sml/dev"
 
 [[session]]
 name = "Portal"
