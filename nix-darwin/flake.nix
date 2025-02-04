@@ -32,8 +32,10 @@
         lazygit
         # neovim
         inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+        iina
         ngrok
         sesh
+        unar
         tailwindcss-language-server
         lua-language-server
         nil
@@ -49,6 +51,7 @@
         enable = true;
         casks = [
           "1password"
+            "alcove"
             "alfred"
             "bartender"
             "boop"
