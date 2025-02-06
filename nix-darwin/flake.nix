@@ -35,6 +35,7 @@
         iina
         ngrok
         sesh
+        spotify
         unar
         tailwindcss-language-server
         lua-language-server
@@ -63,6 +64,7 @@
             "microsoft-azure-storage-explorer"
             "onedrive"
             "whatsapp"
+            "another-redis-desktop-manager"
         ];
       };
 
