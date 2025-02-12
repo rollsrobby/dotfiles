@@ -26,8 +26,8 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        v="nvim";
-        "v."="nvim .";
+        n="nvim";
+        "n."="nvim .";
         e="exit";
         c="clear";
         p="pnpm";
