@@ -15,7 +15,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util, nix-homebrew, ... }:
   let
     configuration = { pkgs, ... }: {
-      services.nix-daemon.enable = true;
+      # services.nix-daemon.enable = true;
 
       nixpkgs.config.allowUnfree = true;
       # List packages installed in system profile. To search by name, run:
@@ -65,6 +65,8 @@
             "onedrive"
             "whatsapp"
             "another-redis-desktop-manager"
+            "raspberry-pi-imager"
+            "zen-browser"
         ];
       };
 
