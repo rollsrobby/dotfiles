@@ -101,6 +101,7 @@ return {
       lspconfig.biome.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.astro.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
       -- lspconfig.roslyn_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.lua_ls.setup({
