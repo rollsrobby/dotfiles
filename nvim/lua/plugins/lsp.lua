@@ -103,7 +103,19 @@ return {
       lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.astro.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-      -- lspconfig.roslyn_ls.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.yamlls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+              ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] =
+              "/k8s/*",
+            }
+          }
+        }
+      })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
