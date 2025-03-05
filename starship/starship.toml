@@ -30,7 +30,7 @@ disabled=false
 
 # disable for now since detec files isn't working properly
 [kubernetes]
-disabled = true
+disabled = false
 # detect_files = ['manifest.yaml']
 
 [direnv]
