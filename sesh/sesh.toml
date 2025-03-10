@@ -13,6 +13,10 @@ name = "sml"
 path = "~/code/sml/dev"
 
 [[session]]
+name = "sml-infra"
+path = "~/code/sml-infra/dev"
+
+[[session]]
 name = "Portal"
 path = "~/code/sml-portal/dev"
 
