@@ -42,6 +42,7 @@
         tmux
         typescript
         typescript-language-server
+        vscode
         vscode-langservers-extracted
         wezterm
         yq
