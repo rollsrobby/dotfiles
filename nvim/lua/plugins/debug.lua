@@ -31,6 +31,45 @@ return {
         args = { "--interpreter=vscode" }
       }
 
+      local function get_dotnet_pid_fzf()
+        -- Command to list dotnet processes with PID and command line
+        -- pgrep -af: -a lists full command line, -f matches against full command line
+        local command = "pgrep -af dotnet"
+
+        -- Pipe the command output into fzf
+        -- Customize fzf options as needed (--height, --layout, --border, etc.)
+        local fzf_command = command ..
+            " | fzf --height=40% --layout=reverse --prompt='Select .NET Process (Azure Func) > '"
+
+        -- Execute the command and capture the selected line
+        -- vim.fn.system() returns the stdout of the command
+        print("Running FZF picker...")
+        local selected_line = vim.fn.system(fzf_command)
+
+        -- Redraw the screen after fzf closes (important!)
+        vim.cmd("redraw!")
+
+        -- Check if FZF was cancelled (empty output) or returned something
+        if selected_line == nil or selected_line == "" then
+          print("FZF cancelled or no process selected.")
+          return nil -- Important: Return nil to cancel DAP attach
+        end
+
+        -- Extract the PID (first sequence of digits) from the selected line
+        local pid_str = selected_line:match("^%s*(%d+)") -- Lua pattern to find digits at the start
+
+        if pid_str then
+          print("Selected PID: " .. pid_str)
+          return tonumber(pid_str) -- Return the PID as a number
+        else
+          vim.notify(
+            "Could not parse PID from selected line: " .. selected_line,
+            vim.log.levels.ERROR
+          )
+          return nil -- Cancel attach if PID couldn't be parsed
+        end
+      end
+
       dap.configurations.cs = {
         {
           type = "coreclr",
@@ -68,12 +107,30 @@ return {
             ASPNETCORE_ENVIRONMENT = 'Development'
           },
         },
+        -- {
+        --   type = "coreclr", -- Matches the adapter type (usually 'coreclr' for netcoredbg)
+        --   name = "Attach to Azure Function (.NET) - FZF",
+        --   request = "attach",
+        --   -- Use the fzf function to get the processId
+        --   processId = get_dotnet_pid_fzf,
+        --   -- Optional: Specify the working directory if needed for symbol loading
+        --   -- cwd = vim.fn.getcwd(), -- Or specify the exact project path
+        --   justMyCode = false, -- Set to false to debug into framework code
+        -- },
+        {
+          type = "coreclr",
+          name = "Attach to Azure Function (.NET)",
+          request = "attach",
+          processId = function()
+            local pid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
+            if pid == "" then return nil end
+            return tonumber(pid)
+          end,
+          justMyCode = false,
+        }
       }
 
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
+      dap.listeners.after.event_initialized.dapui_config = function()
         dapui.open()
       end
       dap.listeners.before.event_terminated.dapui_config = function()
@@ -82,6 +139,18 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+      -- dap.listeners.before.attach.dapui_config = function()
+      --   dapui.open()
+      -- end
+      -- dap.listeners.before.launch.dapui_config = function()
+      --   dapui.open()
+      -- end
+      -- dap.listeners.before.event_terminated.dapui_config = function()
+      --   dapui.close()
+      -- end
+      -- dap.listeners.before.event_exited.dapui_config = function()
+      --   dapui.close()
+      -- end
     end
   }
 }
