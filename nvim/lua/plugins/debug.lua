@@ -1,7 +1,7 @@
 return {
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "Cliffback/netcoredbg-macOS-arm64.nvim" },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -25,110 +25,83 @@ return {
       vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'db4b4b' })
       vim.fn.sign_define('DapLogPoint', { text = '.>' })
 
+      local netcoredbg_path = vim.fn.stdpath('data') .. '/lazy/netcoredbg-macOS-arm64.nvim/netcoredbg/netcoredbg'
+
       dap.adapters.coreclr = {
         type = "executable",
-        command = "netcoredbg",
+        command = netcoredbg_path,
         args = { "--interpreter=vscode" }
       }
 
-      local function get_dotnet_pid_fzf()
-        -- Command to list dotnet processes with PID and command line
-        -- pgrep -af: -a lists full command line, -f matches against full command line
-        local command = "pgrep -af dotnet"
+      local function find_csproj_upward()
+        local current_dir = vim.fn.expand('%:p:h') -- Get the current directory of the file
+        while current_dir ~= '/' do
+          -- Look for the .csproj file in the current directory
+          local csproj = vim.fn.glob(current_dir .. '/*.csproj', false, true)
+          if #csproj > 0 then
+            return csproj[1] -- Return the first .csproj file found
+          end
+          -- Move up to the parent directory
+          current_dir = vim.fn.fnamemodify(current_dir, ':h')
+        end
+        return nil -- Return nil if no .csproj file is found
+      end
 
-        -- Pipe the command output into fzf
-        -- Customize fzf options as needed (--height, --layout, --border, etc.)
-        local fzf_command = command ..
-            " | fzf --height=40% --layout=reverse --prompt='Select .NET Process (Azure Func) > '"
+      local function get_project_name(csproj_file)
+        -- Get the name of the .csproj file without the path and extension
+        return vim.fn.fnamemodify(csproj_file, ':t:r')
+      end
 
-        -- Execute the command and capture the selected line
-        -- vim.fn.system() returns the stdout of the command
-        print("Running FZF picker...")
-        local selected_line = vim.fn.system(fzf_command)
+      local function get_pid(project_name)
+        local handle = io.popen('pgrep -af ' .. project_name .. '.dll')
+        local result = handle:read("*a")
+        handle:close()
 
-        -- Redraw the screen after fzf closes (important!)
-        vim.cmd("redraw!")
-
-        -- Check if FZF was cancelled (empty output) or returned something
-        if selected_line == nil or selected_line == "" then
-          print("FZF cancelled or no process selected.")
-          return nil -- Important: Return nil to cancel DAP attach
+        -- If result is empty or no match, return nil
+        if result == "" then
+          return nil
         end
 
-        -- Extract the PID (first sequence of digits) from the selected line
-        local pid_str = selected_line:match("^%s*(%d+)") -- Lua pattern to find digits at the start
-
-        if pid_str then
-          print("Selected PID: " .. pid_str)
-          return tonumber(pid_str) -- Return the PID as a number
-        else
-          vim.notify(
-            "Could not parse PID from selected line: " .. selected_line,
-            vim.log.levels.ERROR
-          )
-          return nil -- Cancel attach if PID couldn't be parsed
-        end
+        -- Extract the PID from the result (it's the first number in the output)
+        local pid = result:match("^(%d+)")
+        return pid and tonumber(pid) or nil
       end
 
       dap.configurations.cs = {
         {
           type = "coreclr",
-          name = "launch - netcoredbg",
-          request = "launch",
-          program = function()
-            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-            -- local csproj_handle = io.popen('ls *.csproj')
-            -- if csproj_handle == nil then
-            --   return vim.fn.input('Path to dll ', vim.fn.getcwd() .. '/bin/Debug', 'file')
-            -- end
-            -- local csproj_file = csproj_handle:read("*a"):gsub("\n", "");
-            -- csproj_handle:close()
-            -- local project_name = csproj_file:gsub("%.csrpoj", "")
-            --
-            -- local is_function = io.open('Functions/host.json') ~= nil
-            --
-            -- local dll_path
-            -- if is_function then
-            --   dll_path = 'bin/output/' .. project_name .. '.dll'
-            -- else
-            --   local framework_handle = io.popen('ls bin/Debug/')
-            --   local framework = 'net8.0';
-            --   if framework_handle ~= nil then
-            --     local framework_result = framework_handle:read("*a")
-            --     framework_handle:close()
-            --     framework = vim.split(framework_result, "\n")[1]
-            --   end
-            --
-            --   dll_path = 'bin/Debug/' .. framework .. '/' .. project_name .. '.dll'
-            -- end
-            -- return dll_path
-          end,
-          env = {
-            ASPNETCORE_ENVIRONMENT = 'Development'
-          },
-        },
-        -- {
-        --   type = "coreclr", -- Matches the adapter type (usually 'coreclr' for netcoredbg)
-        --   name = "Attach to Azure Function (.NET) - FZF",
-        --   request = "attach",
-        --   -- Use the fzf function to get the processId
-        --   processId = get_dotnet_pid_fzf,
-        --   -- Optional: Specify the working directory if needed for symbol loading
-        --   -- cwd = vim.fn.getcwd(), -- Or specify the exact project path
-        --   justMyCode = false, -- Set to false to debug into framework code
-        -- },
-        {
-          type = "coreclr",
           name = "Attach to Azure Function (.NET)",
           request = "attach",
+          -- processId = get_dotnet_pid_fzf,
           processId = function()
-            local pid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
-            if pid == "" then return nil end
-            return tonumber(pid)
+            -- local pid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
+            -- if pid == "" then return nil end
+            -- return tonumber(pid)
+            local csproj_file = find_csproj_upward()
+            print('proj file ' .. csproj_file);
+            if csproj_file then
+              local project_name = get_project_name(csproj_file)
+              print('ProjectName ' .. project_name);
+              local pid = get_pid(project_name)
+              if pid == "" then
+                local manPid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
+                if manPid == "" then return nil end
+                return tonumber(manPid)
+              else
+                print('Pid ' .. pid);
+                return tonumber(pid)
+              end
+            else
+              local pid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
+              if pid == "" then return nil end
+              return tonumber(pid)
+            end
           end,
-          justMyCode = false,
+          justMyCode = true,
         }
       }
+
+      -- require('netcoredbg-macOS-arm64').setup(dap);
 
       dap.listeners.after.event_initialized.dapui_config = function()
         dapui.open()

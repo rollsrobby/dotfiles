@@ -35,10 +35,23 @@ vim.keymap.set("n", "x", '"_x', { desc = "Do not yank on delete", silent = true 
 
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Remove search highlight", noremap = false, silent = true })
 
+-- vim.bo.formatexpr = "v:vim.lsp.formatexpr()"
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlights-yank', { clear = true }),
   callback = function()
     vim.hl.on_yank()
+  end
+})
+
+local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Add Macro to console.log highlighted var',
+  pattern = { 'javascript', 'typescript' },
+  group = vim.api.nvim_create_augroup('js-log-macro', { clear = true }),
+  callback = function()
+    vim.fn.setreg('l', "yoconsole.log('" .. esc .. "pa:'" .. esc .. "a, " .. esc .. "pa);" .. esc)
+    -- console.log('setreg:', setreg)
   end
 })
