@@ -44,7 +44,7 @@
         ls="eza --icons --git --long";
       };
 
-      initExtra = ''
+      initContent = ''
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         function sesh-sessions() {
           {
