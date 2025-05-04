@@ -8,6 +8,7 @@ return {
       input = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      picker = { enabled = true }
     },
     keys = {
       { "<leader>.",  function() Snacks.scratch() end,                 desc = "Toggle Scratch Buffer" },
