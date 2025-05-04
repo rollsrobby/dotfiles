@@ -29,8 +29,8 @@
         git
         lazydocker
         lazygit
-        # neovim
-        inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+        neovim
+        # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         iina
         ngrok
         sesh
@@ -61,6 +61,7 @@
             "homerow"
             "karabiner-elements"
             "logi-options+"
+            "lm-studio"
             "microsoft-azure-storage-explorer"
             "onedrive"
             "whatsapp"
