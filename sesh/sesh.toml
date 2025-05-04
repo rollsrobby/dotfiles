@@ -69,5 +69,9 @@ path = "~/code/notes"
 startup_command = "nvim ."
 
 [[session]]
+name = "rms-pi-01"
+startup_command = "ssh rms@rms-pi-01"
+
+[[session]]
 name = "pnp"
 path = "~/code/pnpcore"
