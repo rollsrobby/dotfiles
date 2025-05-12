@@ -108,7 +108,20 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.astro.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        end,
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              configFile = "packages/ui/src/styles/globals.css"
+            }
+          }
+        }
+      })
       lspconfig.dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
       lspconfig.yamlls.setup({
         capabilities = capabilities,
