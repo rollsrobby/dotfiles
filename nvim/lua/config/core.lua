@@ -35,6 +35,8 @@ vim.keymap.set("n", "x", '"_x', { desc = "Do not yank on delete", silent = true 
 
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Remove search highlight", noremap = false, silent = true })
 
+-- vim.keymap.set("i", "jj", "<Esc>");
+-- vim.keymap.set("i", "jk", "<Esc>");
 -- vim.bo.formatexpr = "v:vim.lsp.formatexpr()"
 
 vim.api.nvim_create_autocmd('TextYankPost', {
