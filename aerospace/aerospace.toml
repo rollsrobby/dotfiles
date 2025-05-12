@@ -111,14 +111,16 @@ alt-c = 'workspace C'
 alt-b = 'workspace B'
 alt-t = 'workspace T'
 alt-d = 'workspace D'
+alt-m = 'workspace M'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-c = 'move-node-to-workspace C'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-d = 'move-node-to-workspace D'
+alt-shift-m = 'move-node-to-workspace M'
 
-alt-shift-m = 'fullscreen'
+alt-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
