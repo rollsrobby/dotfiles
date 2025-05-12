@@ -29,6 +29,10 @@ name = "Api"
 path = "~/code/sml-api/dev"
 
 [[session]]
+name = "gbm"
+path = "~/code/gbm"
+
+[[session]]
 name = "http"
 path = "~/code/http"
 startup_command = "nvim ."
