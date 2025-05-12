@@ -36,15 +36,15 @@
         sesh
         spotify
         unar
-        tailwindcss-language-server
+        # tailwindcss-language-server
         lua-language-server
         nil
         tmux
         typescript
-        typescript-language-server
+        # typescript-language-server
         vscode
-        vscode-langservers-extracted
-        wezterm
+        # vscode-langservers-extracted
+        # wezterm
         yq
         ];
 
