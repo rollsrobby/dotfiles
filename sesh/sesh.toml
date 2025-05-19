@@ -11,7 +11,7 @@ startup_command = "nvim -c ':DBUIToggle'"
 [[session]]
 name = "sml"
 path = "~/code/sml/dev"
-startup_command = "~/dotfiles/tmux/plugins/tmux-resurrect/scripts/restore.sh"
+startup_command = "~/dotfiles/tmux/plugins/tmux-resurrect/scripts/restore.sh && nvim ."
 
 [[session]]
 name = "sml-infra"
