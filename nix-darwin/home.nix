@@ -8,14 +8,14 @@
   programs.home-manager.enable = true;
 
   home.file = {
-    ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/aerospace;
-    ".config/nix-darwin".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/nix-darwin;
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/nvim;
-    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/starship/starship.toml;
-    ".config/sesh".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/sesh;
-    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/tmux;
-    ".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/wezterm;
-    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/ghostty;
+    ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
+    ".config/nix-darwin".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nix-darwin";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
+    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/starship/starship.toml";
+    ".config/sesh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sesh";
+    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
+  #   ".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink ~/dotfiles/wezterm;
+    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
   };
 
   programs = {
@@ -113,10 +113,10 @@
       enable = true;
     };
 
-    thefuck = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    # thefuck = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
 
     yazi = {
       enable = true;
