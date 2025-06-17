@@ -130,6 +130,8 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       users.users.rms.home = "/Users/rms";
+      users.users.rms.uid = 501;
+      users.knownUsers = [ "rms" ];
     };
   in
   {
