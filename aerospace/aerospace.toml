@@ -182,18 +182,22 @@ run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
-run = ['move-node-to-workspace C']
+run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
+run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
 run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
