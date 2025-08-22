@@ -23,6 +23,7 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         with pkgs; [ 
+        _1password-cli
         aerospace
         azurite
         cargo
@@ -35,12 +36,14 @@
         # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         iina
         ngrok
+        # opencode
         sesh
         spotify
         unar
         # tailwindcss-language-server
         lua-language-server
         nil
+        raycast
         tmux
         typescript
         # typescript-language-server
@@ -56,16 +59,21 @@
           "1password"
             "alcove"
             "alfred"
+            "autodesk-fusion"
+            "bambu-studio"
             "bartender"
             "boop"
             "expressvpn"
             "ghostty"
             "homerow"
             "karabiner-elements"
+            "kindavim"
             "logi-options+"
             "lm-studio"
             "microsoft-azure-storage-explorer"
+            "microsoft-outlook"
             "onedrive"
+            "powershell"
             "whatsapp"
             "another-redis-desktop-manager"
             "raspberry-pi-imager"
