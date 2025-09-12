@@ -8,7 +8,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -153,7 +153,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.rms = import ./home.nix;
         }
-      mac-app-util.darwinModules.default
+        mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
