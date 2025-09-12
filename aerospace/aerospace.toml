@@ -193,12 +193,8 @@ if.app-id = 'com.microsoft.Outlook'
 run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = ['move-node-to-workspace T']
-
-[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = ['move-node-to-workspace T']
+run = ['move-node-to-workspace B']
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
