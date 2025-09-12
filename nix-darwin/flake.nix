@@ -38,7 +38,7 @@
         ngrok
         # opencode
         sesh
-        spotify
+        # spotify
         unar
         # tailwindcss-language-server
         lua-language-server
