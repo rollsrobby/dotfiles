@@ -27,6 +27,7 @@
         aerospace
         azurite
         cargo
+        # codex
         colima
         docker
         git
@@ -105,7 +106,7 @@
         };
         spaces.spans-displays = true;
         # Enable once machine is the only one;
-        # smb.NetBIOSName = "rms-mbp";
+        smb.NetBIOSName = "rms-mbp";
         trackpad.Clicking = true;
         finder = {
           _FXSortFoldersFirst = true;
