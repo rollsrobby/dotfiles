@@ -78,7 +78,7 @@
             "whatsapp"
             "another-redis-desktop-manager"
             "raspberry-pi-imager"
-            "zen-browser"
+            "zen"
         ];
       };
 
