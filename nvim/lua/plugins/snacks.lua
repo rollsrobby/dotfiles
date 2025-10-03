@@ -9,7 +9,10 @@ return {
       input = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-      picker = { enabled = true }
+      picker = {
+        enabled = true,
+        layout = { preset = "ivy" },
+      }
     },
     keys = {
       { "<leader>.",  function() Snacks.scratch() end,                 desc = "Toggle Scratch Buffer" },
@@ -25,6 +28,13 @@ return {
       { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
       { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",              mode = { "n", "t" } },
       { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",              mode = { "n", "t" } },
+      { "<leader>fd", function() Snacks.picker.files() end,            desc = "Find in directory" },
+      { "<leader>fn", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find in nvim config dir" },
+      { "<leader>ff", function() Snacks.picker.git_files() end,        desc = "Find git Files" },
+      { "<leader>fb", function() Snacks.picker.buffers() end,          desc = "Find Buffers" },
+      { "<leader>fh", function() Snacks.picker.help() end,             desc = "Find help tags" },
+      { "<leader>fc", function() Snacks.picker.grep_word() end,        desc = "Find String" },
+      { "<leader>fg", function() require("plugins.snacks.multigrep").pick() end, desc = "Grep in files" },
     },
   }
 }
