@@ -44,7 +44,6 @@
         # tailwindcss-language-server
         lua-language-server
         nil
-        raycast
         tmux
         typescript
         # typescript-language-server
