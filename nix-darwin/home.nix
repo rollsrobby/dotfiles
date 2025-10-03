@@ -88,9 +88,14 @@
       enableZshIntegration = true;
     };
 
+    fd = {
+      enable = true;
+    };
+
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      tmux.enableShellIntegration =true;
     };
 
     gh = {
