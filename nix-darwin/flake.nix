@@ -57,7 +57,6 @@
         enable = true;
         casks = [
           "1password"
-            "alcove"
             "alfred"
             "autodesk-fusion"
             "bambu-studio"
