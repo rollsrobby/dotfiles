@@ -57,3 +57,10 @@ vim.api.nvim_create_autocmd('FileType', {
     -- console.log('setreg:', setreg)
   end
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.bo.formatprg = "jq ."
+  end,
+})
