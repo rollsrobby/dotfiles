@@ -53,7 +53,7 @@ end
 function M.pick(opts)
   opts = opts or {}
   opts = vim.tbl_deep_extend("force", {
-    prompt = "Multi Grep",
+    prompt = "Multi Grep: ",
     live = true,
   }, opts)
   opts.config = wrap_config(opts.config)
