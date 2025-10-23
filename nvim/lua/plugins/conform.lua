@@ -9,8 +9,9 @@ return {
         typescript = { "biome", "biome-check", "biome-organize-imports" },
         typescriptreact = { "biome-check" },
         css = { "biome" },
-        json = { "biome" },
+        json = { "biome", "jq" },
         jsonc = { "biome" },
+        html = { "biome" }
       },
       format_on_save = {
         -- These options will be passed to conform.format()
