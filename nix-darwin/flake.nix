@@ -10,7 +10,8 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-  };
+    # nix-search-tv.url = "github:3timeslazy/nix-search-tv";
+ };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util, nix-homebrew, ... }:
     let
@@ -27,7 +28,6 @@
         aerospace
         azurite
         cargo
-        # codex
         colima
         docker
         git
@@ -37,46 +37,47 @@
         # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         iina
         ngrok
-        # opencode
         sesh
-        # spotify
         unar
-        # tailwindcss-language-server
         lua-language-server
         nil
         tmux
         typescript
-        # typescript-language-server
         vscode
-        # vscode-langservers-extracted
-        # wezterm
         yq
+        nix-search-tv
         ];
 
       homebrew = {
         enable = true;
+        taps = [
+          "azure/functions"
+        ];
+        brews = [
+          "azure-functions-core-tools@4"
+        ];
         casks = [
           "1password"
-            "alfred"
-            "autodesk-fusion"
-            "bambu-studio"
-            "bartender"
-            "boop"
-            "expressvpn"
-            "ghostty"
-            "homerow"
-            "karabiner-elements"
-            "kindavim"
-            "logi-options+"
-            "lm-studio"
-            "microsoft-azure-storage-explorer"
-            "microsoft-outlook"
-            "onedrive"
-            "powershell"
-            "whatsapp"
-            "another-redis-desktop-manager"
-            "raspberry-pi-imager"
-            "zen"
+          "alfred"
+          "autodesk-fusion"
+          "bambu-studio"
+          "bartender"
+          "boop"
+          "expressvpn"
+          "ghostty"
+          "homerow"
+          "karabiner-elements"
+          "kindavim"
+          "logi-options+"
+          "lm-studio"
+          "microsoft-azure-storage-explorer"
+          "microsoft-outlook"
+          "onedrive"
+          "powershell"
+          "whatsapp"
+          "another-redis-desktop-manager"
+          "raspberry-pi-imager"
+          "zen"
         ];
       };
 
