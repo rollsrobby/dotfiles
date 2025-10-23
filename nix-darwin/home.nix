@@ -28,6 +28,7 @@
       shellAliases = {
         n="nvim";
         "n."="nvim .";
+        ns="nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
         e="exit";
         c="clear";
         p="pnpm";
