@@ -83,7 +83,7 @@ outer.top =        2
 # You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
-alt-enter = 'exec-and-forget open /Applications/WezTerm.app'
+alt-enter = 'exec-and-forget open /Applications/Ghostty.app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -107,20 +107,32 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-c = 'workspace C'
-alt-b = 'workspace B'
-alt-t = 'workspace T'
-alt-d = 'workspace D'
-alt-m = 'workspace M'
+ctrl-cmd-alt-c = 'workspace C'
+ctrl-cmd-alt-b = 'workspace B'
+ctrl-cmd-alt-t = 'workspace T'
+ctrl-cmd-alt-d = 'workspace D'
+ctrl-cmd-alt-m = 'workspace M'
+
+ctrl-shift-cmd-alt-c = 'move-node-to-workspace C' 
+ctrl-shift-cmd-alt-b = 'move-node-to-workspace B' 
+ctrl-shift-cmd-alt-t = 'move-node-to-workspace T' 
+ctrl-shift-cmd-alt-d = 'move-node-to-workspace D' 
+ctrl-shift-cmd-alt-m = 'move-node-to-workspace M' 
+
+# alt-c = 'workspace C'
+# alt-b = 'workspace B'
+# alt-t = 'workspace T'
+# alt-d = 'workspace D'
+# alt-m = 'workspace M'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-c = 'move-node-to-workspace C'
-alt-shift-t = 'move-node-to-workspace T'
-alt-shift-b = 'move-node-to-workspace B'
-alt-shift-d = 'move-node-to-workspace D'
-alt-shift-m = 'move-node-to-workspace M'
+# alt-shift-c = 'move-node-to-workspace C'
+# alt-shift-b = 'move-node-to-workspace B'
+# alt-shift-t = 'move-node-to-workspace T'
+# alt-shift-d = 'move-node-to-workspace D'
+# alt-shift-m = 'move-node-to-workspace M'
 
-alt-shift-f = 'fullscreen'
+ctrl-cmd-alt-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
