@@ -1,6 +1,27 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    _1password-cli
+      azurite
+      cargo
+      colima
+      docker
+      git
+      lazydocker
+      lazygit
+      neovim
+      ngrok
+      sesh
+      unar
+      lua-language-server
+      nil
+      tmux
+      typescript
+      yq
+      nix-search-tv
+      ];
+
   programs = {
     zsh = {
       enable = true;
