@@ -83,7 +83,7 @@ outer.top =        2
 # You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
-alt-enter = 'exec-and-forget open /Applications/Ghostty.app'
+# alt-enter = 'exec-and-forget open /Applications/Ghostty.app'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -133,6 +133,7 @@ ctrl-shift-cmd-alt-m = 'move-node-to-workspace M'
 # alt-shift-m = 'move-node-to-workspace M'
 
 ctrl-cmd-alt-f = 'fullscreen'
+alt-shift-f = 'layout floating tiling'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
