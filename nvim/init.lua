@@ -3,6 +3,28 @@ require("config.lazy")
 
 
 local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+-- Softer hover/signature window background + padding/border
+local float_normal = vim.api.nvim_get_hl(0, { name = 'NormalFloat' })
+local hover_bg = float_normal.bg and string.format('#%06x', float_normal.bg) or '#1f2335'
+local float_border = vim.api.nvim_get_hl(0, { name = 'FloatBorder' })
+vim.api.nvim_set_hl(0, 'HoverNormal', { bg = hover_bg })
+vim.api.nvim_set_hl(0, 'HoverBorder', { fg = float_border.fg or nil, bg = hover_bg })
+local orig_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  opts.pad_left = opts.pad_left or 1
+  opts.pad_right = opts.pad_right or 1
+  local bufnr, winnr = orig_floating_preview(contents, syntax, opts, ...)
+  vim.api.nvim_set_option_value(
+    'winhighlight',
+    'Normal:HoverNormal,NormalFloat:HoverNormal,FloatBorder:HoverBorder',
+    { win = winnr }
+  )
+  return bufnr, winnr
+end
+
 vim.diagnostic.config({
   signs = {
     text = {

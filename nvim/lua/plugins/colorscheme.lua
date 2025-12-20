@@ -2,7 +2,9 @@ return {
   {
     "folke/tokyonight.nvim",
     config = function()
-      vim.cmd.colorscheme "tokyonight"
+      vim.cmd.colorscheme "tokyonight-night"
+      -- Override background to match terminal (RGB 37 40 58 = #25263a)
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = '#25263a' })
     end
   },
   {
