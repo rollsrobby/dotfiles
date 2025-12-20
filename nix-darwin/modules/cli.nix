@@ -20,6 +20,7 @@
       typescript
       yq
       nix-search-tv
+      tmuxp
       ];
 
   programs = {
