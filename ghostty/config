@@ -1,8 +1,9 @@
-
+# font-family = MonaspiceNe NFM
 font-family = GeistMono Nerd Font Mono
 font-size = 16
 
-theme = TokyoNight Storm
+theme = TokyoNight
+# theme = TokyoNight Storm
 # theme = gruvbox-material
 
 mouse-hide-while-typing = true
