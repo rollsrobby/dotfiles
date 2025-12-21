@@ -48,6 +48,7 @@
         cat="bat";
         ll="eza --icons --git --long --all";
         ls="eza --icons --git --long";
+        oc="opencode";
       };
 
       initContent = ''
