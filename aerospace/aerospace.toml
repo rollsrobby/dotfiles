@@ -112,12 +112,14 @@ ctrl-cmd-alt-b = 'workspace B'
 ctrl-cmd-alt-t = 'workspace T'
 ctrl-cmd-alt-d = 'workspace D'
 ctrl-cmd-alt-m = 'workspace M'
+ctrl-cmd-alt-p = 'workspace P'
 
 ctrl-shift-cmd-alt-c = 'move-node-to-workspace C' 
 ctrl-shift-cmd-alt-b = 'move-node-to-workspace B' 
 ctrl-shift-cmd-alt-t = 'move-node-to-workspace T' 
 ctrl-shift-cmd-alt-d = 'move-node-to-workspace D' 
 ctrl-shift-cmd-alt-m = 'move-node-to-workspace M' 
+ctrl-shift-cmd-alt-p = 'move-node-to-workspace P' 
 
 # alt-c = 'workspace C'
 # alt-b = 'workspace B'
@@ -228,3 +230,15 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'xyz.askanything.nubana.parents'
 run = ['layout floating']
+[[on-window-detected]]
+if.app-id = 'ch.protonvpn.mac'
+run = ['layout floating']
+
+
+[[on-window-detected]]
+if.app-id = 'com.autodesk.fusion360'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'ch.protonmail.desktop'
+run = ['move-node-to-workspace P']
