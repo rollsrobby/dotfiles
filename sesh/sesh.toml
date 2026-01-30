@@ -12,10 +12,14 @@ path = "~/tools/dbui"
 startup_command = "nvim -c ':DBUIToggle'"
 
 [[session]]
-name = "sml"
+name = "sml dev"
 path = "~/code/sml/dev"
 # startup_script = "tmuxp load -a ~/.tmuxp/sml.yaml"
 # startup_command = "tmuxp load -a ~/.tmuxp/sml.yaml"
+
+[[session]]
+name = "sml review"
+path = "~/code/sml/review"
 
 [[session]]
 name = "hlb"
