@@ -26,6 +26,6 @@
 
   imports = [
     ./modules/cli.nix
-    ./modules/applications.nix
+    # ./modules/applications.nix
   ];
 }

@@ -28,6 +28,11 @@
         {
           system.primaryUser = "rms";
           nixpkgs.config.allowUnfree = true;
+          environment.systemPackages = with pkgs; [
+            aerospace
+            iina
+            vscode
+          ];
 
           homebrew = {
             enable = true;
@@ -36,11 +41,11 @@
             ];
             brews = [
               "azure-functions-core-tools@4"
-              "opencode"
             ];
             casks = [
               "1password"
               "alfred"
+              "another-redis-desktop-manager"
               "autodesk-fusion"
               "bambu-studio"
               "bartender"
@@ -50,16 +55,19 @@
               "homerow"
               "karabiner-elements"
               "kindavim"
-              "logi-options+"
               "lm-studio"
+              "logi-options+"
               "microsoft-azure-storage-explorer"
               "microsoft-outlook"
               "onedrive"
               "powershell"
-              "whatsapp"
-              "another-redis-desktop-manager"
+              "proton-drive"
+              "proton-mail"
+              "proton-pass"
+              "protonvpn"
               "raspberry-pi-imager"
               "tailscale-app"
+              "whatsapp"
               "zen"
             ];
           };
@@ -69,7 +77,7 @@
             NSGlobalDomain = {
               AppleShowAllExtensions = true;
               InitialKeyRepeat = 15;
-              KeyRepeat = 2;
+              KeyRepeat = 1;
               NSAutomaticSpellingCorrectionEnabled = false;
               "com.apple.mouse.tapBehavior" = 1;
               "com.apple.swipescrolldirection" = false;

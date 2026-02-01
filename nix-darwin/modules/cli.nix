@@ -2,26 +2,28 @@
 
 {
   home.packages = with pkgs; [
+    azurite
+    cargo
+    colima
+    docker
+    git
+    git-spice
+    lazydocker
+    lazygit
+    lua-language-server
+    neovim
+    ngrok
+    nil
+    nix-search-tv
+    procps
+    sesh
+    tmux
+    tmuxp
+    typescript
+    unar
+    yq
     _1password-cli
-      azurite
-      cargo
-      colima
-      docker
-      git
-      lazydocker
-      lazygit
-      neovim
-      ngrok
-      sesh
-      unar
-      lua-language-server
-      nil
-      tmux
-      typescript
-      yq
-      nix-search-tv
-      tmuxp
-      ];
+  ];
 
   programs = {
     zsh = {
@@ -31,55 +33,59 @@
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        n="nvim";
-        "n."="nvim .";
-        ns="nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
-        e="exit";
-        c="clear";
-        p="pnpm";
-        b="bun";
-        k="kubectl";
-        d="docker";
-        azs="azurite -l $TMPDIR/azurite -s";
-        ".."="cd ..";
-        "...."="cd ../..";
-        "......"="cd ../../..";
-        grep="grep --color=auto";
-        cat="bat";
-        ll="eza --icons --git --long --all";
-        ls="eza --icons --git --long";
-        oc="opencode";
+        n = "nvim";
+        "n." = "nvim .";
+        ns = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history";
+        e = "exit";
+        c = "clear";
+        p = "pnpm";
+        b = "bun";
+        k = "kubectl";
+        d = "docker";
+        azs = "azurite -l $TMPDIR/azurite -s";
+        ".." = "cd ..";
+        "...." = "cd ../..";
+        "......" = "cd ../../..";
+        grep = "grep --color=auto";
+        cat = "bat";
+        ll = "eza --icons --git --long --all";
+        ls = "eza --icons --git --long";
+        oc = "opencode .";
+        sml = "tmuxp load ~/.tmuxp/sml.yaml -a";
+        tks = "tmux kill-server";
       };
 
       initContent = ''
-        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-        function sesh-sessions() {
-          {
-            exec </dev/tty
-              exec <&1
-              local session
-              session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-              zle reset-prompt > /dev/null 2>&1 || true
-              [[ -z "$session" ]] && return
-              sesh connect $session
+          source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+          eval "$(gs shell completion zsh)"
+          function sesh-sessions() {
+            {
+              exec </dev/tty
+                exec <&1
+                local session
+                session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+                zle reset-prompt > /dev/null 2>&1 || true
+                [[ -z "$session" ]] && return
+                sesh connect $session
+            }
           }
-        }
 
-      zle     -N             sesh-sessions
-        bindkey -M emacs '\es' sesh-sessions
-        bindkey -M vicmd '\es' sesh-sessions
-        bindkey -M viins '\es' sesh-sessions    
-        '';
+        zle     -N             sesh-sessions
+          bindkey -M emacs '\es' sesh-sessions
+          bindkey -M vicmd '\es' sesh-sessions
+          bindkey -M viins '\es' sesh-sessions    
+      '';
 
       sessionVariables = {
-        EDITOR="nvim";
-        PAGER="less -FirSwX";
+        EDITOR = "nvim";
+        PAGER = "less -FirSwX";
+        PATH = "/Users/rms/.opencode/bin:$PATH";
       };
 
     };
 
     bat = {
-      enable= true;
+      enable = true;
     };
 
     btop = {
@@ -103,7 +109,7 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      tmux.enableShellIntegration =true;
+      tmux.enableShellIntegration = true;
     };
 
     gh = {
@@ -112,6 +118,13 @@
 
     gh-dash = {
       enable = true;
+      settings = {
+        defaults = {
+          merge = {
+            deleteBranch = false;
+          };
+        };
+      };
     };
 
     jq = {
