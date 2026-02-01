@@ -54,6 +54,9 @@ return {
 
       local function get_pid(project_name)
         local handle = io.popen('pgrep -af ' .. project_name .. '.dll')
+        if handle == nil then
+          return nil
+        end
         local result = handle:read("*a")
         handle:close()
 
@@ -88,6 +91,11 @@ return {
                 if manPid == "" then return nil end
                 return tonumber(manPid)
               else
+                if (pid == nil) then
+                  local manPid = vim.fn.input("Enter PID of the dotnet process to attach to: ")
+                  if manPid == "" then return nil end
+                  return tonumber(manPid)
+                end
                 print('Pid ' .. pid);
                 return tonumber(pid)
               end
