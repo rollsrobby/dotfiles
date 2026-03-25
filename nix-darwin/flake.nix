@@ -41,6 +41,7 @@
             ];
             brews = [
               "azure-functions-core-tools@4"
+              "bash"
             ];
             casks = [
               "1password"
@@ -65,6 +66,7 @@
               "proton-mail"
               "proton-pass"
               "protonvpn"
+              "qFlipper"
               "raspberry-pi-imager"
               "tailscale-app"
               "whatsapp"
