@@ -55,6 +55,8 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.fn.setreg('l', "yoconsole.log('" .. esc .. "pa:'" .. esc .. "a, " .. esc .. "pa);" .. esc)
     -- console.log('setreg:', setreg)
+    vim.fn.setreg('e', "yoyield* Effect.logInfo('" .. esc .. "pa:'" .. esc .. "a, " .. esc .. "pa);" .. esc)
+    -- yield* Effect.logInfo('setreg:', setreg)
   end
 })
 

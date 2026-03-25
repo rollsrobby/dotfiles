@@ -36,27 +36,27 @@ vim.diagnostic.config({
   }
 })
 
-local capabilities = {
-  general = {
-    positionEncodings = { 'utf-16' }
-  }
-}
-capabilities = require('blink.cmp').get_lsp_capabilities(capabilities);
-
-local on_attach = function(_, bufnr)
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'grd', function() Snacks.picker.lsp_definitions() end, opts)
-  vim.keymap.set('n', 'grr', function() Snacks.picker.lsp_references() end, opts)
-  vim.keymap.set('n', 'gri', function() Snacks.picker.lsp_implementations() end, opts)
-  vim.keymap.set('n', '<leader>D', function() Snacks.picker.diagnostics_buffer() end, opts)
-  vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, opts)
-end
-
-vim.lsp.config('*', {
-  root_markers = { '.git', '.bare' },
-  on_attach = on_attach,
-  capabilities = capabilities
-})
-
-
-vim.lsp.enable({ 'biome', 'ts_ls', 'jsonls', 'tailwindcss', 'dockerls', 'yamlls', 'lua_ls', 'nil_ls' })
+-- local capabilities = {
+--   general = {
+--     positionEncodings = { 'utf-16' }
+--   }
+-- }
+-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities);
+--
+-- local on_attach = function(_, bufnr)
+--   local opts = { noremap = true, silent = true, buffer = bufnr }
+--   vim.keymap.set('n', 'grd', function() Snacks.picker.lsp_definitions() end, opts)
+--   vim.keymap.set('n', 'grr', function() Snacks.picker.lsp_references() end, opts)
+--   vim.keymap.set('n', 'gri', function() Snacks.picker.lsp_implementations() end, opts)
+--   vim.keymap.set('n', '<leader>D', function() Snacks.picker.diagnostics_buffer() end, opts)
+--   vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, opts)
+-- end
+--
+-- vim.lsp.config('*', {
+--   root_markers = { '.git', '.bare' },
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- })
+--
+--
+-- vim.lsp.enable({ 'biome', 'ts_ls', 'jsonls', 'tailwindcss', 'dockerls', 'yamlls', 'lua_ls', 'nil_ls' })

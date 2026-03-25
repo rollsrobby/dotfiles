@@ -53,6 +53,8 @@
         oc = "opencode .";
         sml = "tmuxp load ~/.tmuxp/sml.yaml -a";
         tks = "tmux kill-server";
+        w = "watch -n 1 -c";
+        # gs = "git-spice";
       };
 
       initContent = ''
@@ -80,6 +82,7 @@
         EDITOR = "nvim";
         PAGER = "less -FirSwX";
         PATH = "/Users/rms/.opencode/bin:$PATH";
+        GIT_SPICE_NO_GS_WARNING=1;
       };
 
     };
@@ -110,15 +113,31 @@
       enable = true;
       enableZshIntegration = true;
       tmux.enableShellIntegration = true;
+      defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
     };
 
     gh = {
       enable = true;
+      settings = {
+        git_protocol = "ssh";
+        editor = "nvim";
+        color_labels = "enabled";
+      };
     };
 
     gh-dash = {
       enable = true;
       settings = {
+        keybindings = {
+          prs = {
+            key = "M";
+            command = "gh pr merge --merge {{.PrNumber}} --repo {{.RepoName}}";
+            name = "Merge with Create Commit";
+            confirm = true;
+            #     - key: M
+            #       command: gh pr merge --merge --no-delete-branch {{.PrNumber}} --repo {{.RepoName}}
+          };
+        };
         defaults = {
           merge = {
             deleteBranch = false;
@@ -147,6 +166,7 @@
     yazi = {
       enable = true;
       enableZshIntegration = true;
+      shellWrapperName = "y";
     };
 
     zoxide = {
