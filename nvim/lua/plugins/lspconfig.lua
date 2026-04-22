@@ -52,6 +52,22 @@ return {
       -- },
     })
 
-    vim.lsp.enable({ 'biome', 'ts_ls', 'jsonls', 'tailwindcss', 'docker-language-server', 'yamlls', 'lua_ls', 'nil_ls' })
+    local log_dir = vim.fs.joinpath(vim.fn.stdpath("state"), "roslyn_ls", "logs")
+    vim.fn.mkdir(log_dir, "p")
+    vim.lsp.config('roslyn_ls', {
+      cmd = {
+        'roslyn-language-server',
+        '--logLevel',
+        'Information',
+        '--extensionLogDirectory',
+        log_dir,
+        '--stdio'
+      },
+      on_attach = on_attach,
+      capabilities = capabilities
+    })
+
+    vim.lsp.enable({ 'biome', 'ts_ls', 'jsonls', 'tailwindcss', 'docker-language-server', 'yamlls', 'lua_ls', 'nil_ls',
+      'roslyn_ls' })
   end
 }

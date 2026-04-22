@@ -10,6 +10,10 @@ vim.opt.scrolloff = 10
 vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
+vim.opt.winborder = "rounded"
+
+-- local progress = vim.ui.progress_status()
+require('vim._core.ui2').enable()
 
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
@@ -77,7 +81,7 @@ vim.api.nvim_create_autocmd("FileType", {
       -- this stupid tracking is here only because
       -- they have added warnings on absent parsers
       local available = vim.g.ts_available
-        or require("nvim-treesitter").get_available()
+          or require("nvim-treesitter").get_available()
       if not vim.g.ts_available then
         vim.g.ts_available = available
       end
@@ -95,4 +99,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
-
