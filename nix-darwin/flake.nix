@@ -28,6 +28,15 @@
         {
           system.primaryUser = "rms";
           nixpkgs.config.allowUnfree = true;
+          # nixpkgs.overlays = [
+          #   (_final: prev: {
+          #    direnv = prev.direnv.overrideAttrs (_: {
+          #        postPatch = ''
+          #        substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
+          #        '';
+          #        });
+          #    })
+          # ];
           environment.systemPackages = with pkgs; [
             aerospace
             iina
@@ -42,6 +51,7 @@
             brews = [
               "azure-functions-core-tools@4"
               "bash"
+              "tree-sitter-cli"
             ];
             casks = [
               "1password"
@@ -58,7 +68,7 @@
               "kindavim"
               "lm-studio"
               "logi-options+"
-              "microsoft-azure-storage-explorer"
+              # "microsoft-azure-storage-explorer"
               "microsoft-outlook"
               "onedrive"
               "powershell"
@@ -67,7 +77,7 @@
               "proton-pass"
               "protonvpn"
               "qFlipper"
-              "raspberry-pi-imager"
+              # "raspberry-pi-imager"
               "tailscale-app"
               "whatsapp"
               "zen"

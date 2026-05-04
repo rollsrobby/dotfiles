@@ -24,6 +24,10 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
   };
 
+  home.sessionPath = [
+    "$HOME/.dotnet/tools"
+  ];
+
   imports = [
     ./modules/cli.nix
     # ./modules/applications.nix
