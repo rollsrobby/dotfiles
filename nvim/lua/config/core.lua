@@ -11,6 +11,7 @@ vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.winborder = "rounded"
+vim.opt.foldenable = false
 
 -- local progress = vim.ui.progress_status()
 require('vim._core.ui2').enable()
