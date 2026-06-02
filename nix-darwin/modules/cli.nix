@@ -42,7 +42,7 @@
         b = "bun";
         k = "kubectl";
         d = "docker";
-        azs = "azurite -l $TMPDIR/azurite -s";
+        azs = "azurite -l $TMPDIR/azurite -s --skipApiVersionCheck";
         ".." = "cd ..";
         "...." = "cd ../..";
         "......" = "cd ../../..";

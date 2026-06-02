@@ -16,6 +16,7 @@ vim.opt.foldenable = false
 -- local progress = vim.ui.progress_status()
 require('vim._core.ui2').enable()
 
+vim.cmd('packadd nvim.undotree')
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")

@@ -43,6 +43,7 @@ return {
           { "fancy_searchcount" },
         },
         lualine_x = {
+          "lsp_status",
           "fancy_diff",
           "progress",
           "location",
