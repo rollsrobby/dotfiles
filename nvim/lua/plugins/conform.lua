@@ -11,7 +11,8 @@ return {
         css = { "biome" },
         json = { "biome", "jq" },
         jsonc = { "biome" },
-        html = { "biome" }
+        html = { "biome" },
+        toml = { "tombi" }
       },
       format_on_save = {
         -- These options will be passed to conform.format()

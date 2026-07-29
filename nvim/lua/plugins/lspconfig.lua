@@ -56,7 +56,7 @@ return {
     vim.fn.mkdir(log_dir, "p")
     vim.lsp.config('roslyn_ls', {
       cmd = {
-        'roslyn-language-server',
+        '/home/rms/.dotnet/tools/roslyn-language-server',
         '--logLevel',
         'Information',
         '--extensionLogDirectory',
@@ -67,7 +67,19 @@ return {
       capabilities = capabilities
     })
 
-    vim.lsp.enable({ 'biome', 'ts_ls', 'jsonls', 'tailwindcss', 'docker-language-server', 'yamlls', 'lua_ls', 'nil_ls',
-      'roslyn_ls' })
+    -- remove 'nil_ls' and test 'nixd'
+    vim.lsp.enable({ 
+      'biome', 
+      'ts_nls',
+      'tsgo',
+      'jsonls',
+      'tailwindcss',
+      'docker-language-server',
+      'yamlls',
+      'lua_ls',
+      'nixd',
+      'roslyn_ls',
+      'tombi'
+    })
   end
 }
