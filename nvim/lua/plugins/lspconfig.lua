@@ -52,6 +52,16 @@ return {
       -- },
     })
 
+    -- vim.lsp.config("yamlls", {
+    --   settings = {
+    --     yaml = {
+    --       format = {
+    --         enable = true,
+    --       },
+    --     },
+    --   },
+    -- })
+
     local log_dir = vim.fs.joinpath(vim.fn.stdpath("state"), "roslyn_ls", "logs")
     vim.fn.mkdir(log_dir, "p")
     vim.lsp.config('roslyn_ls', {
@@ -71,7 +81,7 @@ return {
     vim.lsp.enable({ 
       'biome', 
       'ts_nls',
-      'tsgo',
+      'tsc',
       'jsonls',
       'tailwindcss',
       'docker-language-server',
