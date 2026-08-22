@@ -1,7 +1,12 @@
 return {
   {
     "ThePrimeagen/99",
-    dependencies = { 'saghen/blink.compat', version = '2.*' },
+    dependencies = { 
+      {
+        'saghen/blink.compat', version = '2.*' 
+      },
+      "nvim-telescope/telescope.nvim",
+    },
     config = function()
       local _99 = require("99")
 
