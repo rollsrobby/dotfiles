@@ -4,12 +4,12 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "biome", "biome-check", "biome-organize-imports" },
-        javascriptreact = { "biome", "biome-check", "biome-organize-imports" },
-        typescript = { "biome", "biome-check", "biome-organize-imports" },
+        javascript = { "biome-check" },
+        javascriptreact = { "biome-check" },
+        typescript = { "biome-check" },
         typescriptreact = { "biome-check" },
         css = { "biome" },
-        json = { "biome", "jq" },
+        json = { "jq", "biome" },
         jsonc = { "biome" },
         html = { "biome" },
         toml = { "tombi" }
