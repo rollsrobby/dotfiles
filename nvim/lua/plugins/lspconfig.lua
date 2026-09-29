@@ -80,7 +80,6 @@ return {
     -- remove 'nil_ls' and test 'nixd'
     vim.lsp.enable({ 
       'biome', 
-      'ts_nls',
       'tsc',
       'jsonls',
       'tailwindcss',
